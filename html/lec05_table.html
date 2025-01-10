@@ -1,11 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <h1>테이블이란?</h1>
+    <table border="1">
+      <caption>
+        표1. 학생성적
+      </caption>
+      <tr>
+        <th>이름</th>
+        <th>점수</th>
+      </tr>
+      <tr>
+        <td>김철수</td>
+        <td>60</td>
+      </tr>
+      <tr>
+        <td>이영희</td>
+        <td>90</td>
+      </tr>
+      <tr>
+        <td>홍길동</td>
+        <td>20</td>
+      </tr>
+    </table>
+
+    <table border="1">
+      <tr>
+        <td rowspan="3">내용</td>
+        <td>내용</td>
+        <td>내용</td>
+      </tr>
+      <tr>
+        <!-- <td>내용</td> -->
+        <td colspan="2">내용</td>
+        <!-- <td>내용</td> -->
+      </tr>
+      <tr>
+        <!-- <td>내용</td> -->
+        <td>내용</td>
+        <td>내용</td>
+      </tr>
+    </table>
+
+    <!-- practice -->
+    <table border="1">
+      <tr>
+        <th>1행</th>
+        <td>1행 1열</td>
+      </tr>
+      <tr>
+        <th rowspan="2">2행</th>
+        <td>2행 2열</td>
+      </tr>
+      <tr>
+        <!-- <td></td> -->
+        <td>3행 2열</td>
+      </tr>
+    </table>
+
+    <table border="1">
+      <tr>
+        <th>1열</th>
+        <th colspan="2">2열</th>
+        <!-- <td></td> -->
+      </tr>
+      <tr>
+        <td>2행 1열</td>
+        <td>2행 2열</td>
+        <td>2행 3열</td>
+      </tr>
+    </table>
+
+    <h1>테이블 구조</h1>
+    <table border="1">
+      <colgroup>
+        <!-- key:value; -->
+        <col width="30%" style="background-color: bisque" />
+        <col width="70%" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>이름</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>김가남</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>김나남</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>김다담</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>김라람</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>김마맘</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>김바밤</td>
+        </tr>
+        <tput>
+          <tr>
+            <td>인원수</td>
+            <td>6명</td>
+          </tr>
+        </tput>
+      </tbody>
+    </table>
+
+    <!-- 종합문제 -->
+    <h1>종합 문제</h1>
+    <table border="1">
+      <caption>
+        출장비용 보고서
+      </caption>
+      <colgroup>
+        <col />
+        <col />
+        <col style="background-color: lavenderblush" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>대분류</th>
+          <th>중분류</th>
+          <th>금액</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>교통비</td>
+          <td>ktx</td>
+          <td>100000</td>
+        </tr>
+        <tr>
+          <td rowspan="2">식비</td>
+          <td>점심</td>
+          <td>20000</td>
+        </tr>
+        <tr>
+          <!-- <td></td> -->
+          <td>저녁</td>
+          <td>200000</td>
+        </tr>
+        <tr>
+          <td>숙박비</td>
+          <td>모텔</td>
+          <td>50000</td>
+        </tr>
+      </tbody>
+      <tput>
+        <tr>
+          <td colspan="2">총합계</td>
+          <td>1900000</td>
+        </tr>
+      </tput>
+    </table>
+    <br />
+    <div>콘텐츠1</div>
+    <div>콘텐츠2</div>
+    <span>콘텐츠3</span>
+    <span>콘텐츠4</span>
+
+    <div>
+      <span>이렇게도</span>
+      <span style="background-color: lavenderblush">쓸 수</span>
+      <span>있나요?</span>
+    </div>
+    <div>네~ 쓸 수 있어요!</div>
+
+    <!-- homework -->
+    <!-- 1번 -->
+    <h2>행 통합과 열 통합 심화(1)</h2>
+
+    <table border="1">
+      <tbody>
+        <tr>
+          <td>가</td>
+          <td>나</td>
+          <td>다</td>
+          <td rowspan="4">라</td>
+        </tr>
+        <tr>
+          <td>마</td>
+          <td rowspan="3" colspan="2">바</td>
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+        </tr>
+        <tr>
+          <td>사</td>
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+        </tr>
+        <tr>
+          <td>아</td>
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+        </tr>
+        <tr>
+          <td colspan="2">자</td>
+          <!-- <td></td> -->
+          <td colspan="2">차</td>
+          <!-- <td></td> -->
+        </tr>
+        <tr>
+          <td colspan="4">카</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 2번 -->
+    <h2>행 통합과 열 통합 심화(2)</h2>
+    <table border="1">
+      <tbody>
+        <tr>
+          <td rowspan="5">1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <!-- <td></td> -->
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td>9</td>
+        </tr>
+        <tr>
+          <!-- <td></td> -->
+          <td rowspan="3">10</td>
+          <td>11</td>
+          <td>12</td>
+          <td rowspan="2">13</td>
+        </tr>
+        <tr>
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <td>14</td>
+          <td>15</td>
+          <!-- <td></td> -->
+        </tr>
+        <tr>
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <td>16</td>
+          <td>17</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <td colspan="5">19</td>
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+        </tr>
+      </tbody>
+    </table>
+    <!-- 3번 -->
+    <h2>행 통합과 열 통합 심화(3)</h2>
+    <table border="1">
+      <tbody>
+        <tr>
+          <td colspan="4">1</td>
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <td rowspan="7">2</td>
+        </tr>
+        <tr>
+          <td rowspan="5">3</td>
+          <td rowspan="4">4</td>
+          <td colspan="2">5</td>
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+        </tr>
+        <tr>
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <td>6</td>
+          <td rowspan="4">7</td>
+          <!-- <td></td> -->
+        </tr>
+        <tr>
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <td>8</td>
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+        </tr>
+        <tr>
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <td>9</td>
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+        </tr>
+        <tr>
+          <!-- <td></td> -->
+          <td colspan="2">10</td>
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+        </tr>
+        <tr>
+          <td colspan="4">11</td>
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+        </tr>
+      </tbody>
+    </table>
+    <!-- 4번 -->
+    <h2>종합 문제</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th colspan="5">하수정 보석 컬렉션</th>
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+          <!-- <td></td> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th rowspan="5">제품 리스트</th>
+          <th>코드</th>
+          <th>분류</th>
+          <th>가격</th>
+          <th>구매가능 개수</th>
+        </tr>
+        <tr>
+          <!-- <td></td> -->
+          <td>01-468</td>
+          <td>가을</td>
+          <td>200,000원</td>
+          <td>1068</td>
+        </tr>
+        <tr>
+          <!-- <td></td> -->
+          <td>01-469</td>
+          <td>가을</td>
+          <td>150,000원</td>
+          <td>1700</td>
+        </tr>
+        <tr>
+          <!-- <td></td> -->
+          <td>01-470</td>
+          <td>여름</td>
+          <td>950,000원</td>
+          <td>2500</td>
+        </tr>
+        <tr>
+          <!-- <td></td> -->
+          <td>01-471</td>
+          <td>봄</td>
+          <td>120,000원</td>
+          <td>3200</td>
+        </tr>
+      </tbody>
+      <tput>
+        <tr>
+            <tr>
+                <th colspan="3">총합</th>
+                <!-- <td></td> -->
+                <!-- <td></td> -->
+                <td>1,420,000원</td>
+                <td>8468</td>
+            </tr>
+        </tr>
+      </tput>
+    </table>
+  </body>
 </html>
