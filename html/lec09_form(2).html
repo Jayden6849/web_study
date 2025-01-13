@@ -20,5 +20,279 @@
     <input type="date" value="2025-01-12" min="2025-01-01" max="2025-01-13" />
     <input type="month" value="2025-01" min="2025-01-01" max="2025-03-31" />
     <input type="time" value="16:20" />
+
+    <input type="checkbox" value="1" id="jja" />
+    <label for="jja">짜장면</label>
+    <input type="checkbox" value="2" id="bok" />
+    <label for="bok">볶음밥</label>
+
+    <input type="radio" value="1" id="seoul" name="addr" />
+    <label for="seoul">서울</label>
+    <input type="radio" value="2" id="dae" name="addr" />
+    <label for="dae">대전</label>
+
+    <br />
+
+    <select name="user_select" id="user_select">
+      <option value="1">1번.</option>
+      <option value="2">2번.</option>
+      <option value="3">3번.</option>
+      <option value="4">4번.</option>
+    </select>
+
+    <br />
+
+    <progress max="100" value="7"></progress>
+
+    <br />
+
+    <form method="get" action="#">
+      <input type="test" required />
+      <button type="button" onclick="alert('안녕');">버튼</button>
+      <button type="submit">제출</button>
+      <button type="reset">테스트</button>
+    </form>
+
+    <!-- practice : 피자 주문하기  -->
+    <h2>피자 주문하기</h2>
+    <form method="get" action="#">
+      <fieldset>
+        <legend>고객정보</legend>
+        <label for="user_name4">고객명 : </label>
+        <input type="text" id="user_name4" />
+        <br />
+        <label for="user_phone4">전화번호 : </label>
+        <input type="text" id="user_phone4" />
+        <br />
+        <label for="user_email4">E-mail : </label>
+        <input type="email" id="user_email4" />
+      </fieldset>
+      <fieldset>
+        <legend>피자 사이즈</legend>
+        <input type="radio" value="1" name="pizza_size" />Small<br />
+        <input type="radio" value="2" name="pizza_size" />Medium<br />
+        <input type="radio" value="3" name="pizza_size" />Large<br />
+      </fieldset>
+      <fieldset>
+        <legend>토핑 선택</legend>
+        <input type="checkbox" value="1" name="option" />새우<br />
+        <input type="checkbox" value="2" name="option" />고구마<br />
+        <input type="checkbox" value="3" name="option" />감자<br />
+        <input type="checkbox" value="4" name="option" />파인애플<br />
+      </fieldset>
+      <label for="delivery_time">희망 배송 시간 : </label>
+      <input type="time" id="delivery_time" />
+      <br /><br />
+      <button type="submit">주문하기</button>
+    </form>
+
+    <!-- homework 1 납품 대장 -->
+    <h1>납품 대장</h1>
+    <form method="get" action="#">
+      <fieldset>
+        <label for="supplier_name">1. 납품자명 : </label>
+        <input type="text" id="supplier_name" placeholder="name" />
+        <br />
+        <label for="supplier_email">2. email : </label>
+        <input type="email" id="supplier_email" placeholder="hkd@naver.com" />
+      </fieldset>
+      <fieldset>
+        <legend>납품정보</legend>
+        <ul>
+          <li>
+            <label for="prod_name">상품명 : </label>
+            <input type="text" id="prod_name" />
+          </li>
+          <li>
+            <label for="sup_amount">납품수량 : </label>
+            <input
+              type="number"
+              id="sup_amount"
+              min="100"
+              placeholder="최소 100"
+            />
+          </li>
+          <li>
+            <label for="sup_grade">납품등급 : </label>
+            <input type="range" min="1" max="10" value="5" />
+          </li>
+          <li>
+            <label for="etc">기타사항 : </label>
+            <textarea id="etc"> </textarea>
+          </li>
+        </ul>
+      </fieldset>
+      <button type="submit">send message</button>
+    </form>
+
+    <!-- homework 2 회원가입 -->
+    <h1>회원가입</h1>
+    <form method="get" action="#">
+      <fieldset>
+        <legend>필수 입력 사항</legend>
+        <table>
+          <tbody>
+            <tr>
+              <th><label for="user_id">ID</label></th>
+              <td>
+                <input
+                  type="text"
+                  id="user_id"
+                  placeholder="아이디 10글자 이내"
+                  required
+                />
+              </td>
+              <td>
+                <button type="button">중복 확인</button>
+              </td>
+            </tr>
+            <tr>
+              <th><label for="user_pw">비밀번호</label></th>
+              <td>
+                <input
+                  type="password"
+                  id="user_pw"
+                  placeholder="영문, 숫자 포함 8자리 이상"
+                  minlength="8"
+                  required
+                />
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <th><label for="chk_pw">비밀번호 확인</label></th>
+              <td>
+                <input type="password" id="chk_pw" minlength="8" required />
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <th><label for="user_email">Email</label></th>
+              <td><input type="email" id="user_email" required /></td>
+              <td>
+                <select>
+                  <option value="0">직접입력</option>
+                  <option value="1">@gmail.com</option>
+                  <option value="2">@naver.com</option>
+                  <option value="3">@hanmail.net</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+      <fieldset>
+        <legend>추가 정보</legend>
+        <label for="user_profile">프로필 사진 : </label>
+        <input type="file" id="user_profile" />
+        <br /><br />
+        <label for="user_gender">성별 : </label>
+        <input type="radio" id="user_gender" name="user_gender" value="1" />남자
+        <input type="radio" id="user_gender" name="user_gender" value="2" />여자
+        <br /><br />
+        <label for="user_birth">생년월일 : </label>
+        <input type="date" id="user_birth" name="user_birth" />
+        <br /><br />
+        <label for="user_hobby">취미</label>
+        <br />
+        <input
+          type="checkbox"
+          id="user_hobby"
+          name="user_hobby"
+          value="1"
+        />야구
+        <input
+          type="checkbox"
+          id="user_hobby"
+          name="user_hobby"
+          value="2"
+        />농구
+        <input
+          type="checkbox"
+          id="user_hobby"
+          name="user_hobby"
+          value="3"
+        />축구
+        <br />
+        <input
+          type="checkbox"
+          id="user_hobby"
+          name="user_hobby"
+          value="4"
+        />공부
+        <input
+          type="checkbox"
+          id="user_hobby"
+          name="user_hobby"
+          value="5"
+        />음악감상
+        <br />
+        <input type="checkbox" id="user_hobby" name="user_hobby" value="6" />
+        <label for="user_hobby_etc">기타 : </label>
+        <input type="text" id="user_hobby_etc" name="user_hobby_etc" />
+        <br /><br />
+        <label for="introduce">자기소개</label>
+        <br />
+        <textarea id="introduce" cols="50" rows="5"></textarea>
+      </fieldset>
+      <br />
+      <button type="submit">회원가입</button>
+      <button type="reset">다시입력</button>
+      <button type="button">이전으로</button>
+    </form>
+
+    <!-- homework 3 백엔드 개발자 지원서 -->
+    <h1>백엔드 개발자 지원서</h1>
+    <p>
+      Java, Spring, DataBase에 대한 기술적 이해와 경험이 있는 분을 찾습니다.
+    </p>
+    <hr />
+    <form method="get" action="#">
+      <legend><b>개인정보</b></legend>
+      <label for="applicant_name"
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이름&nbsp;&nbsp;&nbsp;</label
+      >
+      <input type="text" id="applicant_name" required />
+      <br />
+      <label for="applicant_phone"
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;연락처</label
+      >
+      <input type="text" id="" applicant_phone required />
+      <br /><br />
+      <legend><b>지원 분야</b></legend>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+        type="radio"
+        id="applicant_field"
+        name="applicant_field"
+        value="1"
+      />
+      &nbsp;&nbsp;&nbsp;백엔드개발
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+        type="radio"
+        id="applicant_field"
+        name="applicant_field"
+        value="2"
+      />
+      &nbsp;&nbsp;&nbsp;서버 개발
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+        type="radio"
+        id="applicant_field"
+        name="applicant_field"
+        value="3"
+      />
+      &nbsp;&nbsp;&nbsp;개발 환경 개선
+      <br /><br />
+      <legend><b>지원동기</b></legend>
+      <textarea
+        cols="50"
+        rows="5"
+        placeholder="지원 동기를 간략히 써주세요."
+      ></textarea>
+      <br />
+      <button type="submit">접수하기</button>
+      <button type="reset">다시쓰기</button>
+    </form>
   </body>
 </html>
