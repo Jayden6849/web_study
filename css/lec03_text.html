@@ -37,16 +37,97 @@
   </head>
   <body>
     <h1>글꼴</h1>
+    <!-- font-family -->
     <p class="basic">기본 글꼴 사용하기</p>
     <p class="web">웹 폰트 적용하기</p>
+    <!-- font-size -->
     <div id="size">
       <p>em을 기준으로~</p>
       <p>rem을 기준으로~</p>
     </div>
+    <!-- font-weight -->
     <p style="font-weight: normal">Lorem ipsum dolor sit amet</p>
     <p style="font-weight: bold">Lorem ipsum dolor sit amet</p>
     <p style="font-weight: bolder">Lorem ipsum dolor sit amet</p>
     <p style="font-weight: lighter">Lorem ipsum dolor sit amet</p>
     <p style="font-weight: 500">Lorem ipsum dolor sit amet</p>
+    <!-- color -->
+    <style>
+      .colorful {
+        background-color: rgba(102, 232, 206, 0.2);
+        color: rgb(232, 184, 102);
+      }
+    </style>
+    <p class="colorful">알록달록</p>
+    <!-- text-decoration -->
+    <style>
+      .deco > #under {
+        text-decoration: underline;
+      }
+      .deco > #over {
+        text-decoration: overline;
+      }
+      .deco > #through {
+        text-decoration: line-through;
+      }
+    </style>
+    <div class="deco">
+      <span id="under">Lipsum</span>
+      <span id="over">Lipsum</span>
+      <span id="through">Lipsum</span>
+    </div>
+    <a
+      style="text-decoration: none; color: black"
+      href="https://www.naver.com"
+      target="_blank"
+      >네이버</a
+    >
+    <!-- letter-spacing, word-spacing -->
+    <h1>간격 조정</h1>
+    <style>
+      .dis {
+        letter-spacing: 10px;
+        word-spacing: 30px;
+      }
+    </style>
+    <p class="dis">
+      It is a long established fact that a reader will be distracted by the
+      readable content of a page when looking at its layout. The point of using
+      Lorem Ipsum is that it has a more-or-less normal distribution of letters,
+      as opposed to using 'Content here, content here', making it look like
+      readable English. Many desktop publishing packages and web page editors
+      now use Lorem Ipsum as their default model text, and a search for 'lorem
+      ipsum' will uncover many web sites still in their infancy. Various
+      versions have evolved over the years, sometimes by accident, sometimes on
+      purpose (injected humour and the like).
+    </p>
+    <!-- text-align  -->
+    <style>
+      .para {
+        /* border-width: 2px;
+        border-style: dotted;
+        border-color: salmon; */
+        border: 5px dotted salmon;
+        text-align: center;
+        text-indent: 50px;
+        line-height: 50px;
+      }
+    </style>
+    <p class="para" style="text-align: left">
+      It is a long established fact that a reader will be distracted by the
+      readable content of a page when looking at its layout.
+    </p>
+    <p class="para" style="text-align: right">
+      It is a long established fact that a reader will be distracted by the
+      readable content of a page when looking at its layout.
+    </p>
+    <p class="para" style="text-align: center">
+      It is a long established fact that a reader will be distracted by the
+      readable content of a page when looking at its layout.
+    </p>
+    <p class="para" style="text-align: justify">
+      It is a long established fact that a reader will be distracted by the
+      readable content of a page when looking at its layout.
+    </p>
   </body>
 </html>
