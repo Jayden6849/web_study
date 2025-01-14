@@ -1,11 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>속성 선택자</title>
-</head>
-<body>
-    
-</body>
+    <style>
+      input[type="text"] {
+        background-color: lavenderblush;
+      }
+      input[type="email"] {
+        background-color: skyblue;
+      }
+      input[type="password"] {
+        background-color: crimson;
+      }
+      a[href="#"] {
+        color: crimson;
+      }
+      #user_id {
+        color: yellowgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>속성 선택자</h1>
+    <form>
+      <label for="user_id">아이디 : </label>
+      <input type="text" id="user_id" required />
+      <br />
+      <label for="user_pw">비밀번호 : </label>
+      <input type="password" id="user_pw" required />
+      <br />
+    </form>
+    <a href="#">위로가기</a>
+
+    <!-- practice -->
+    <h1>속성 태그 연습</h1>
+    <form method="get" action="#">
+      <fieldset>
+        <legend>사용자 정보</legend>
+        <label for="u_email">이메일</label>
+        <input type="email" id="u_email" name="u_email" required />
+        <br />
+        <label for="u_pw">비밀번호</label>
+        <input type="password" id="u_pw" name="u_pw" required />
+        <br />
+        <label for="u_grade">사용자 등급</label>
+        <input type="number" id="u_grade" name="u_grade" />
+        <br />
+        <label for="u_info">사용자 정보</label>
+        <input type="text" id="u_info" name="u_info" />
+      </fieldset>
+    </form>
+  </body>
 </html>

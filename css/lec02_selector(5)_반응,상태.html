@@ -4,6 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>반응 선택자</title>
+    <style>
+      #p1:active {
+        background-color: mediumseagreen;
+      }
+      #p2 {
+        color: yellow;
+      }
+      #p2:hover {
+        color: hotpink;
+      }
+      #bt1:hover {
+        background-color: aquamarine;
+      }
+      #bt2:active {
+        background-color: crimson;
+      }
+      input[name="user_id"]:focus {
+        background-color: rgb(191, 191, 243);
+      }
+      input[type="text"]:disabled {
+        background-color: crimson;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div id="reation">
+      <p id="p1">클릭 -> 배경색</p>
+      <p id="p2">마우스 올리면 -> 글자색</p>
+    </div>
+    <!-- practice -->
+    <button type="button" id="bt1">버튼1</button>
+    <button type="button" id="bt2">버튼2</button>
+    <div id="condition">
+      <input type="text" name="user_id" />
+      <input type="text" name="user_name" disabled />
+    </div>
+  </body>
 </html>
