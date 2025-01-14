@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>글꼴</title>
+    <!-- 구글폰트 : Single Day 시작 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap"
+      rel="stylesheet"
+    />
+    <!-- 구글폰트 : Single Day 끝 -->
+    <style>
+      .basic {
+        font-family: "궁서";
+      }
+      .web {
+        font-family: "Single Day", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+      #size {
+        font-size: 40px;
+      }
+      #size > p:first-child {
+        font-size: 0.5em;
+      }
+      #size > p:last-child {
+        font-size: 0.5rem;
+      }
+      /* html {
+        font-size: 80px;
+      } */
+    </style>
+  </head>
+  <body>
+    <h1>글꼴</h1>
+    <p class="basic">기본 글꼴 사용하기</p>
+    <p class="web">웹 폰트 적용하기</p>
+    <div id="size">
+      <p>em을 기준으로~</p>
+      <p>rem을 기준으로~</p>
+    </div>
+    <p style="font-weight: normal">Lorem ipsum dolor sit amet</p>
+    <p style="font-weight: bold">Lorem ipsum dolor sit amet</p>
+    <p style="font-weight: bolder">Lorem ipsum dolor sit amet</p>
+    <p style="font-weight: lighter">Lorem ipsum dolor sit amet</p>
+    <p style="font-weight: 500">Lorem ipsum dolor sit amet</p>
+  </body>
+</html>
