@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>position</title>
+  </head>
+  <body>
+    <!-- 포지션 속성 -->
+    <h1>포지션 속성</h1>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        border: 2px solid salmon;
+        padding-left: 10px;
+      }
+      .box1 {
+        position: static;
+      }
+      .box2 {
+        position: relative;
+        top: -20px;
+        left: 20px;
+      }
+      .parent {
+        width: 300px;
+        height: 300px;
+        border: 2px dashed green;
+        position: relative;
+      }
+      .box3 {
+        position: absolute; /* relative한 부모가 따로 없다면 body 기준으로 이동하게 됨*/
+        top: 20px;
+        left: 20px;
+      }
+      .box4 {
+        position: fixed;
+        top: 20px;
+        left: 200px;
+      }
+    </style>
+    <div class="box box4">fixed하게</div>
+    <div class="box box1">static하게</div>
+    <div class="box box2">relative하게</div>
+    <div class="parent">
+      <div class="box box3">absolute하게</div>
+    </div>
+    <!-- visibility -->
+    <h1>visibility</h1>
+    <h2>아이디 중복 확인</h2>
+    <style>
+      #valid {
+        visibility: hidden;
+      }
+    </style>
+    <form>
+      <label for="userId">아이디</label>
+      <input type="text" id="userId" />
+      <br />
+      <span id="valid">잘못된 아이디입니다.</span>
+    </form>
+    <script>
+      document.getElementById("userId").onkeyup = function () {
+        if (document.getElementById("userId").value == "user01") {
+          document.getElementById("valid").style.visibility = "visible";
+        } else {
+          document.getElementById("valid").style.visibility = "hidden";
+        }
+      };
+    </script>
+    <!-- z-index -->
+    <h1>z-index</h1>
+    <style>
+      .z-parent > div {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+      }
+      .z1 {
+        background-color: lavenderblush;
+        top: 10px;
+        left: 300px;
+        z-index: 3;
+      }
+      .z2 {
+        background-color: darkseagreen;
+        top: 30px;
+        left: 330px;
+        z-index: 2;
+      }
+      .z3 {
+        background-color: lightsalmon;
+        top: 50px;
+        left: 350px;
+        z-index: 999;
+      }
+    </style>
+    <div class="z-parent">
+      <div class="z1">첫째</div>
+      <div class="z2">둘째</div>
+      <div class="z3">셋째</div>
+    </div>
+    <!-- float -->
+    <h1>float</h1>
+    <div class="box" style="float: left">왼쪽이 좋아요</div>
+    <div class="box" style="float: right">오른쪽 좋아요</div>
+    <div style="border: 2px solid blue">Lorem dolor sit amet</div>
+    <div style="border: 2px solid violet; clear: both">
+      Lorem dolor sit amet
+    </div>
+  </body>
+</html>
