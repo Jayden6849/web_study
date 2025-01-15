@@ -12,6 +12,7 @@
         width: 300px;
         height: 300px;
         display: flex;
+        flex-direction: column;
       }
       .item {
         background-color: lightpink;
@@ -19,33 +20,33 @@
       }
     </style>
     <h2>stretch</h2>
-    <div class="container" style="">
+    <div class="container" style="align-items: stretch">
       <div class="item">10</div>
       <div class="item">20</div>
       <div class="item">30</div>
     </div>
     <h2>flex-start</h2>
-    <div class="container">
+    <div class="container" style="align-items: flex-start">
       <div class="item">10</div>
       <div class="item">20</div>
       <div class="item">30</div>
     </div>
     <h2>flex-end</h2>
-    <div class="container">
+    <div class="container" style="align-items: flex-end">
       <div class="item">10</div>
       <div class="item">20</div>
       <div class="item">30</div>
     </div>
 
     <h2>center</h2>
-    <div class="container">
+    <div class="container" style="align-items: center">
       <div class="item">10</div>
       <div class="item">20</div>
       <div class="item">30</div>
     </div>
 
     <h2>baseline</h2>
-    <div class="container">
+    <div class="container" style="align-items: baseline">
       <div class="item">10</div>
       <div class="item">20</div>
       <div class="item">30</div>

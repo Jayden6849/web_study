@@ -1,64 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>늘이기, 줄이기</title>
     <style>
-        .container{
-            background-color: lightblue;
-            width: 300px;
-        }
-        .item{
-            background-color: lightpink;
-            margin: 10px;
-        }
+      .container {
+        background-color: lightblue;
+        width: 300px;
+        display: flex;
+        /* flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: stretch;
+        */
+      }
+      .item {
+        background-color: lightpink;
+        margin: 10px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>grow 0 , shrink 0</h1>
     <style>
-        #zerozero > .item{
+      #zerozero > .item {
+        /* flex-basis: 300px;
+        flex-grow: 0;
+        flex-shrink: 0; */
 
-        }
+        flex: 0 0 300;
+      }
     </style>
     <div class="container" id="zerozero">
-        <div class="item">10</div>
-        <div class="item">20</div>
-        <div class="item">30</div>
+      <div class="item">10</div>
+      <div class="item">20</div>
+      <div class="item">30</div>
     </div>
     <h1>grow : 0, shrink : 1</h1>
     <style>
-        #zeroone > .item{
-
-        }
+      #zeroone > .item {
+        flex-basis: 300px;
+        flex-grow: 0;
+        flex-shrink: 1;
+      }
     </style>
     <div class="container" id="zeroone">
-        <div class="item">10</div>
-        <div class="item">20</div>
-        <div class="item">30</div>
+      <div class="item">10</div>
+      <div class="item">20</div>
+      <div class="item">30</div>
     </div>
     <h1>grow : 1 , shrink : 0</h1>
     <style>
-        #onezero > .item{
-
-        }
+      #onezero > .item {
+        flex-basis: 300px;
+        flex-grow: 1;
+        flex-shrink: 0;
+      }
     </style>
     <div class="container" id="onezero">
-        <div class="item">10</div>
-        <div class="item">20</div>
-        <div class="item">30</div>
+      <div class="item">10</div>
+      <div class="item">20</div>
+      <div class="item">30</div>
     </div>
     <h1>grow : 1, shrink : 1</h1>
     <style>
-        #oneone > .item{
-
-        }
+      #oneone > .item {
+        flex-basis: 300px;
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
     </style>
     <div class="container" id="oneone">
-        <div class="item">10</div>
-        <div class="item">20</div>
-        <div class="item">30</div>
+      <div class="item">10</div>
+      <div class="item">20</div>
+      <div class="item">30</div>
     </div>
-</body>
+  </body>
 </html>
