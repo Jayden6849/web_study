@@ -15,9 +15,34 @@
       <li>사과</li>
       <li>바나나</li>
     </ul>
-    <ol style="list-style-type: ">
+    <ol style="list-style-type: lower-roman">
       <li>꼬부기</li>
       <li>어니부기</li>
     </ol>
+    <!-- 목록 이미지 -->
+    <h1>목록 이미지</h1>
+    <style>
+      .img {
+        list-style-image: url("../resources/sponge_list.png");
+      }
+    </style>
+    <ul class="img">
+      <li>HTML5</li>
+      <li>CSS3</li>
+      <li>ES6</li>
+    </ul>
+    <!-- 목록 들여쓰기 -->
+    <h1>목록 들여쓰기</h1>
+    <style>
+      .inside {
+        /* list-style-position: inside; */
+        list-style: square inside url("../resources/sponge_list.png");
+      }
+    </style>
+    <ul class="inside">
+      <li>HTML5</li>
+      <li>CSS3</li>
+      <li>ES6</li>
+    </ul>
   </body>
 </html>
