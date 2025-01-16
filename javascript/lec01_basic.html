@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lec01_basic</title>
+  </head>
+  <body>
+    <!-- 1. 인라인 방식 -->
+    <h1>인라인(inline)</h1>
+    <button type="button" onclick="alert('안녕하세요');">내장 함수</button>
+    <button type="button" onclick="userFunc();">사용자 정의 함수</button>
+
+    <script>
+      // 자바스크립트의 함수 선언
+      /* 
+        블록주석은 이렇게 씁니다
+      */
+      function userFunc() {
+        console.log("반가워요");
+      }
+    </script>
+
+    <!-- 2. 인터널 방식 -->
+    <h1>인터널(internal)</h1>
+    <button type="button" id="btn_internal">인터널 버튼</button>
+    <script>
+      document.getElementById("btn_internal").onclick = function () {
+        alert("Hi");
+      };
+    </script>
+
+    <!-- 3. 익스터널 방식 -->
+    <h1>익스터널(external)</h1>
+    <button type="button" id="btn_external">익스터널 버튼</button>
+    <script src="../resources/sample.js"></script>
+
+    <!-- 4. 데이터 입출력 -->
+    <h1>데이터 입출력</h1>
+    <!-- 4.1 콘솔 테스트 -->
+    <h2>console.log();</h2>
+    <button type="button" id="btn_consoletest">콘솔 테스트</button>
+    <script>
+      function printConsole() {
+        console.log("Hello World!");
+      }
+      document.getElementById("btn_consoletest").onclick = function () {
+        printConsole();
+      };
+    </script>
+
+    <!-- practice 1 -->
+    <h2>practice 1</h2>
+    <button type="button" id="btn_name">나의 이름은?</button>
+    <script>
+      document.getElementById("btn_name").onclick = function () {
+        console.log("Jayden");
+      };
+    </script>
+    <!-- 4.2 얼럿 테스트 -->
+    <h2>alert();</h2>
+    <button type="button" onclick="printAlert();">얼럿 버튼</button>
+    <script>
+      function printAlert() {
+        alert("헬로 월드");
+      }
+    </script>
+    <!-- practice 2 -->
+    <h2>practice 2</h2>
+    <button type="button" id="btn_now">오늘 날짜</button>
+    <script>
+      document.getElementById("btn_now").onclick = function () {
+        alert("2025년 01월 16일 목요일");
+      };
+    </script>
+    <!-- 4.3 프롬프트 테스트 -->
+    <h2>prompt();</h2>
+    <input type="button" value="이름 입력" onclick="insertName();" />
+    <script>
+      function insertName() {
+        var name = prompt("이름을 입력하세요", "홍길동");
+        console.log(name);
+      }
+    </script>
+    <!-- practice 3 -->
+    <h2>practice 3</h2>
+    <button type="button" id="btn_prom" onclick="askPlace();">위치</button>
+    <script>
+      function askPlace() {
+        var place = prompt("어디에 있으세요?");
+        console.log(place);
+      }
+    </script>
+    <!-- 4.4 컨펌 테스트 -->
+    <h2>confirm();</h2>
+    <button type="button" id="btn_confirm">확인받기</button>
+    <script>
+      document.getElementById("btn_confirm").onclick = function printYesOrNo() {
+        var flag = confirm("당신은 로봇입니까?");
+        // console.log(flag);
+        if (flag == true) {
+          console.log("Hi robot");
+        } else {
+          console.log("사람");
+        }
+      };
+    </script>
+    <!-- practice 4 -->
+    <h2>practice 4</h2>
+    <button type="button" id="btn_sunday" onclick="chkSunday();">일요일</button>
+    <script>
+      function chkSunday() {
+        var flag = confirm("오늘은 일요일인가요?");
+
+        if (flag == true) {
+          console.log("O");
+        } else {
+          console.log("X");
+        }
+      }
+    </script>
+    <!-- 4.5 도큐먼트 라이트 테스트 -->
+    <h2>document.write();</h2>
+    <button type="button" onclick="printTag();">바껴라!</button>
+    <script>
+      function printTag() {
+        // document.write("<h1>제목</h1>");
+        document.write("Lipsum");
+      }
+    </script>
+    <!-- practice 5 -->
+    <h2>practice 5</h2>
+    <button type="button" onclick="printText();">제목 출력</button>
+    <script>
+      function printText() {
+        document.write(
+          "<h1>제목은 역시 H1</h1> <style>h1{text-align:center;}</style>"
+        );
+      }
+    </script>
+  </body>
+</html>

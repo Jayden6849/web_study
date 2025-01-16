@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lec02_access</title>
+  </head>
+  <body>
+    <h1>HTML 태그 접근법</h1>
+    <!-- 1. 아이디 기준 접근 -->
+    <h2>아이디 기준으로 접근하기</h2>
+    <div id="toRed">변경전</div>
+    <button type="button" onclick="turnRed();">빨갛게</button>
+    <script>
+      function turnRed() {
+        var target = document.getElementById("toRed");
+        target.style.color = "red";
+      }
+    </script>
+  </body>
+</html>
