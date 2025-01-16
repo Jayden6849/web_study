@@ -9,12 +9,190 @@
     <h1>HTML 태그 접근법</h1>
     <!-- 1. 아이디 기준 접근 -->
     <h2>아이디 기준으로 접근하기</h2>
-    <div id="toRed">변경전</div>
+    <div id="idTarget">변경전</div>
     <button type="button" onclick="turnRed();">빨갛게</button>
     <script>
       function turnRed() {
-        var target = document.getElementById("toRed");
+        var target = document.getElementById("idTarget");
         target.style.color = "red";
+      }
+    </script>
+    <!-- 2. 클래스 기준 접근 -->
+    <h2>클래스 기준으로 접근하기</h2>
+    <p class="a">p1</p>
+    <span class="b a">span1</span>
+    <p class="b">p2</p>
+    <button type="button" onclick="changeOnlyA();">a만</button>
+    <script>
+      function changeOnlyA() {
+        var el = document.getElementsByClassName("a");
+        console.log(el);
+        // 1. 인덱스 기준으로 접근
+        el[0].style.color = "hotpink";
+        // 2. 반복문
+        for (var i = 0; i < el.length; i++) {
+          // el[i].style.color = "hotpink";
+          if (i == 0) {
+            el[i].style.color = "red";
+          } else {
+            el[i].style.color = "green";
+          }
+        }
+      }
+    </script>
+    <!-- 3. 태그명 기준 접근 -->
+    <h2>태그명 기준으로 접근하기</h2>
+    <ul>
+      <li>HTML5</li>
+      <li>CSS3</li>
+      <li>ES6</li>
+    </ul>
+    <button type="button" onclick="changeJSBlue();">JS 좋아!</button>
+    <script>
+      function changeJSBlue() {
+        var tagEl = document.getElementsByTagName("li");
+        // console.log(tagEl);
+        tagEl[2].style.color = "blue";
+      }
+    </script>
+    <!-- 4. 이름 기준 접근 -->
+    <h2>이름 기준으로 접근하기</h2>
+    <label> <input type="checkbox" name="food" value="1" />짜장면</label><br />
+    <label> <input type="checkbox" name="food" value="2" />짬뽕</label><br />
+    <label><input type="checkbox" name="food" value="3" />군만두</label><br />
+    <button type="button" onclick="addReview();">리뷰 이벤트 참여하기</button>
+    <script>
+      // 리뷰 이벤트 참여하기 버튼을 누르면 자동으로 군만두가 체크되는 로직
+      function addReview() {
+        var names = document.getElementsByName("food");
+        // console.log(names);
+        var chkStatus = names[2].checked;
+        if (chkStatus == true) {
+          names[2].checked = false;
+        } else {
+          names[2].checked = true;
+        }
+      }
+    </script>
+    <!-- 5. 선택자 기준 접근 -->
+    <h2>선택자 기준으로 접근하기</h2>
+    <button type="button" onclick="practiceQuery();">접근하기</button>
+    <script>
+      function practiceQuery() {
+        var one = document.querySelector("#idTarget");
+        one.style.color = "orange";
+        var many = document.querySelectorAll(".b");
+        many[0].style.color = "red";
+      }
+    </script>
+    <!-- 6. value 속성 사용하기 -->
+    <h2>value 속성 사용하기</h2>
+    <input type="text" id="user_name" />
+    <button type="button" id="getNameBtn">가져오기</button>
+    <button type="button" id="setNameBtn">바꿔주기</button>
+    <script>
+      document.getElementById("getNameBtn").onclick = function () {
+        var user_name = document.getElementById("user_name").value;
+        // console.log(user_name);
+        alert(user_name);
+      };
+      document.getElementById("setNameBtn").onclick = function () {
+        // document.getElementById("user_name").value = "김철수";
+        document.getElementById("user_name").value += "김철수";
+      };
+    </script>
+    <!-- 7. style 속성 사용하기 -->
+    <h2>style 속성 활용하기</h2>
+    <style>
+      #styleBtn {
+        background-color: cornflowerblue;
+      }
+    </style>
+    <input
+      id="styleBtn"
+      type="button"
+      value="스타일 변신"
+      onclick="changeStyle();"
+    />
+    <script>
+      function changeStyle() {
+        // console.log("함수 연결 확인");
+        var st1 = document.getElementById("styleBtn").style.backgroundColor;
+        console.log(st1);
+
+        var ele2 = document.getElementById("styleBtn");
+        var st2 = getComputedStyle(ele2).backgroundColor;
+        console.log(st2);
+
+        ele2.style.backgroundColor = "gold";
+      }
+    </script>
+    <!-- practice 1 -->
+    <h4>
+      문제1. 색상 선택후 변경 버튼을 클릭하면 색상이 변경되도록 만들어보세요.
+    </h4>
+    <input type="color" id="color1" />
+    <button type="button" id="changeColor" onclick="chgColor();">변경</button>
+    <br /><br />
+    <div
+      id="targetDiv"
+      style="width: 50px; height: 50px; background-color: rgb(0, 0, 0)"
+    ></div>
+    <script>
+      function chgColor() {
+        var value1 = document.getElementById("color1").value;
+        // console.log(value1);
+        document.getElementById("targetDiv").style.backgroundColor = value1;
+      }
+    </script>
+    <h4>문제2. 버튼에 따른 크기 조절이 가능하도록 만들어보세요.</h4>
+    <button id="btn1" onclick="chgsize(50);">50x50</button>
+    <button id="btn2" onclick="chgsize(100);">100x100</button>
+    <button id="btn3" onclick="chgsize(200);">200x200</button>
+    <br /><br />
+    <div
+      id="targetDiv2"
+      style="width: 50px; height: 50px; background-color: black"
+    ></div>
+    <script>
+      function chgsize(num) {
+        document.getElementById("targetDiv2").style.width = num + "px";
+        document.getElementById("targetDiv2").style.height = num + "px";
+      }
+      //   function chgSizeFifty() {
+      //     // alert("chk");
+      //     document.getElementById("targetDiv2").style.width = "50px";
+      //     document.getElementById("targetDiv2").style.height = "50px";
+      //   }
+      //   function chgSizeHundred() {
+      //     // alert("chk");
+      //     document.getElementById("targetDiv2").style.width = "100px";
+      //     document.getElementById("targetDiv2").style.height = "100px";
+      //   }
+      //   function chgSizeTwoHundred() {
+      //     // alert("chk");
+      //     document.getElementById("targetDiv2").style.width = "200px";
+      //     document.getElementById("targetDiv2").style.height = "200px";
+      //   }
+    </script>
+    <!-- 8. innerHTML 활용하기 -->
+    <h2>innerHTML 활용하기</h2>
+    <div id="test1">
+      <p>Hello</p>
+    </div>
+    <div id="test2">안녕하세요</div>
+    <input type="button" value="가져오기" onclick="getTag();" />
+    <input type="button" value="변경하기" onclick="setTag();" />
+    <script>
+      function getTag() {
+        var t1 = document.getElementById("test1").innerHTML;
+        console.log(t1);
+        var t2 = document.getElementById("test2").innerHTML;
+        console.log(t2);
+      }
+      function setTag() {
+        document.getElementById("test1").innerHTML = "<p>Hello Wwrld!</p>";
+        document.getElementById("test2").innerHTML = "안녕하세요!";
       }
     </script>
   </body>
