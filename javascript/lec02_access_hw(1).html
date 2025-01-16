@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 태그 접근 과제 1</title>
+</head>
+<body>
+    <label for="#input1">구매자 : </label>
+    <input id="input1" type="text" name="구매자" placeholder="구매자 이름을 입력하세요">
+    <br>
+    <label for="#input2">상품명 : </label>
+    <input id="input2" type="text" name="상품명" placeholder="구매 상품명을 입력하세요">
+    <br>
+    <label for="#input3">가격 : </label>
+    <input id="input3" type="text" name="가격" placeholder="구매 가격을 입력하세요">
+    <br><br>
+    <button type="button" onclick="getBuyer();">입력값 출력하기</button>
+    <br><br>
+    <div id="targetDiv" style="width: 400px; height: 400px; background-color: antiquewhite;"></div>
+    <script>
+        function getBuyer() {
+            // console.log("테스트");
+            
+            var buyer = document.getElementsByTagName("input");
+            console.log('구매자 : ' + buyer[0].value);
+            var inner1 = '구매자 : ' + buyer[0].value;
+
+            var prod = document.getElementById("input2");
+            console.log('상품명 : ' + prod.value);
+            var inner2 = '상품명 : ' + prod.value;
+
+            var price = document.getElementsByName("가격");
+            console.log('가격 : ' + price[0].value + "원");
+            var inner3 = '가격 : ' + price[0].value + '원';
+
+            document.getElementById("targetDiv").innerHTML += inner1 + '<br>';
+            document.getElementById("targetDiv").innerHTML += inner2 + '<br>';
+            document.getElementById("targetDiv").innerHTML += inner3;
+        }
+    </script>
+</body>
+</html>
