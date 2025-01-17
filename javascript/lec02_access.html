@@ -175,7 +175,7 @@
       //     document.getElementById("targetDiv2").style.height = "200px";
       //   }
     </script>
-    <!-- 8. innerHTML 활용하기 -->
+    <!-- 8. innerHTML, innerText 활용하기 -->
     <h2>innerHTML 활용하기</h2>
     <div id="test1">
       <p>Hello</p>
@@ -185,14 +185,20 @@
     <input type="button" value="변경하기" onclick="setTag();" />
     <script>
       function getTag() {
-        var t1 = document.getElementById("test1").innerHTML;
-        console.log(t1);
-        var t2 = document.getElementById("test2").innerHTML;
-        console.log(t2);
+        // var t1 = document.getElementById("test1").innerHTML;
+        // console.log(t1);
+        // var t2 = document.getElementById("test2").innerHTML;
+        // console.log(t2);
+        var t3 = document.getElementById("test1").innerText;
+        var t4 = document.getElementById("test2").innerText;
+        console.log(t3);
+        console.log(t4);
       }
       function setTag() {
-        document.getElementById("test1").innerHTML = "<p>Hello World!</p>";
-        document.getElementById("test2").innerHTML = "안녕하세요!";
+        // document.getElementById("test1").innerHTML = "<p>Hello World!</p>";
+        // document.getElementById("test2").innerHTML = "안녕하세요!";
+        document.getElementById("test1").innerText = "Hello World!";
+        document.getElementById("test2").innerText = "안녕하세요!";
       }
     </script>
   </body>

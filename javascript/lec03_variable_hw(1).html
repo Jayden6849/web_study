@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자라나라</title>
+</head>
+<body>
+    <h1>자라나라 스폰지밥</h1>
+    <button type="button" onclick="sizeUp();">+</button>
+    <br>
+    <img src="../resources/sponge.png" style="width:100px" id="srcImg">
+    <script>
+        
+        function sizeUp() {
+            let valImg = Number(document.getElementById("srcImg").style.width);
+            console.log(valImg);
+            
+        }
+    </script>
+</body>
+</html>
