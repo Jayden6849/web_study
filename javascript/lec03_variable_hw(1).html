@@ -9,13 +9,35 @@
     <h1>자라나라 스폰지밥</h1>
     <button type="button" onclick="sizeUp();">+</button>
     <br>
-    <img src="../resources/sponge.png" style="width:100px" id="srcImg">
+    <img src="../resources/sponge.png" style="width:100px; height:100px;" id="srcImg">
+    <h1>이미지 크기 조정</h1>
+    <label for="input1">가로 : </label>
+    <input type="number" id="input1">
+    <br>
+    <label for="input2">세로 : </label>
+    <input type="number" id="input2">
+    <button type="button" id="chgBtn" onclick="chgSize();">변경</button>
+    <br><br>
+    <img src="../resources/dung.png" style="width:100px; height:100px;" id="srcImg2">
     <script>
-        
         function sizeUp() {
-            let valImg = Number(document.getElementById("srcImg").style.width);
-            console.log(valImg);
+            let valImgW = parseInt(document.getElementById("srcImg").style.width);
+            let valImgH = parseInt(document.getElementById("srcImg").style.height);
+
+            document.getElementById("srcImg").style.width = `${valImgW + 100}px`;
+            document.getElementById("srcImg").style.height = `${valImgH + 100}px`;
+        }
+        function chgSize() {
+            let inputVal1 = parseInt(document.getElementById("input1").value);
+            let inputVal2 = parseInt(document.getElementById("input2").value);
+            // console.log(inputVal1, inputVal2);
+
+            let dungW = parseInt(document.getElementById("srcImg2").style.width);
+            let dungH = parseInt(document.getElementById("srcImg2").style.height);
+            // console.log(dungW, dungH, dungW + inputVal1, dungH + inputVal2);
             
+            document.getElementById("srcImg2").style.width = `${dungW + inputVal1}px`;
+            document.getElementById("srcImg2").style.height = `${dungH + inputVal2}px`;
         }
     </script>
 </body>

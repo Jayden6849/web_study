@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>홀수? 짝수?</h1>
+    <button type="button" onclick="addCircle(1);">구슬추가</button>
+    <button type="button" onclick="chkCircle();">홀짝</button>
+    <button type="button" onclick="deleteCircle();">초기화</button>
+    <br><br>
+    <div id="targetDiv">
+        <!-- <div id="circle" style="background-color:aquamarine; width:50px; height:50px; border-radius: 50%; display:inline-block"></div>
+        <div id="circle" style="background-color:aquamarine; width:50px; height:50px; border-radius: 50%; display:inline-block"></div> -->
+    </div>
+    <script>
+        let cnt = 0;
+        function addCircle(n) {
+            cnt += n;
+            let addhtml = "";
+            for(let i=0; i<cnt; i++) {
+                addhtml += "<div id='circle' style='background-color:aquamarine; width:50px; height:50px; border-radius: 50%; display:inline-block'></div>";
+            }
+            document.getElementById('targetDiv').innerHTML = addhtml;
+
+            // console.log(cnt);
+        }
+        function chkCircle() {
+            alert(cnt+'개');
+        }
+        function deleteCircle() {
+            cnt=0;
+            document.getElementById('targetDiv').innerHTML = "";
+        }
+    </script>
+    <h1>계산기</h1>
+    <label for="num1">첫번째 값 : </label>
+    <input type="number" id="num1">
+    <br>
+    <label for="num2">두번째 값 : </label>
+    <input type="number" id="num2">
+    <br>
+    <button type="button" onclick="calculate('+')">+</button>
+    <button type="button" onclick="calculate('-')">-</button>
+    <button type="button" onclick="calculate('x')">x</button>
+    <button type="button" onclick="calculate('/')">/</button>
+    <button type="button" onclick="calculate('%')">%</button>
+    <hr>
+    <div id="targetDiv2">계산 결과 : </div>
+    <script>
+        function calculate(flag) {
+            let number1 = Number(document.getElementById("num1").value);
+            let number2 = Number(document.getElementById("num2").value);
+            console.log(number1, number2);
+            switch(flag) {
+                case '+' :
+                    document.getElementById("targetDiv2").innerHTML = `<div id="targetDiv2">계산 결과 : ${number1+number2}</div>`;
+                    break;
+                case '-' :
+                    document.getElementById("targetDiv2").innerHTML = `<div id="targetDiv2">계산 결과 : ${number1-number2}</div>`;
+                    break;
+                case 'x' :
+                    document.getElementById("targetDiv2").innerHTML = `<div id="targetDiv2">계산 결과 : ${number1*number2}</div>`;
+                    break;
+                case '/' :
+                    document.getElementById("targetDiv2").innerHTML = `<div id="targetDiv2">계산 결과 : ${number1/number2}</div>`;
+                    break;
+                case '%' :
+                    document.getElementById("targetDiv2").innerHTML = `<div id="targetDiv2">계산 결과 : ${number1%number2}</div>`;
+                    break;
+            }
+        }
+    </script>
+    <h1>문자 누적하기</h1>
+    <input type="text" id="textShort">
+    <button type="button" onclick="addStr();">누적</button>
+    <br><br>
+    <textarea cols="20" rows="5" id="textLong" style="resize:none;"></textarea>
+    <script>
+        let addhtml2 = ""
+        function addStr() {
+            let strShort = document.getElementById("textShort").value;
+            // console.log(strShort);
+            addhtml2 += strShort;
+            document.getElementById("textLong").innerHTML = addhtml2;
+            document.getElementById("textShort").value = "";
+        }
+    </script>
+</body>
+</html>
