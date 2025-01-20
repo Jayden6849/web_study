@@ -158,6 +158,7 @@
     <label for="prod" style="font-weight: bold;">생산 개수 : </label>
     <input type="number" id="prod">
     <button type="button" onclick="produce();">생산</button>
+    <br><br>
     <div id="prodTarget">
         <div id="productSet">
             
@@ -180,6 +181,59 @@
                 break;
                 document.getElementById("productSet").innerHTML += `<br>`;
             }
+        }
+    </script>
+    <h1>while문</h1>
+    <input type="number" id="whileCnt" placeholder="10부터 감소하여 멈출 숫자">
+    <input type="button" value="while 동작" onclick="whileFunc();">
+    <script>
+        function whileFunc() {
+            let i=10;
+            while(true) {
+                console.log(i);
+                if(i===Number(document.getElementById("whileCnt").value)) break;
+                i--;
+            }
+            
+        }
+    </script>
+    <h1>do-while문</h1>
+    <button type="button" onclick="doWhileFunc();">do-while실행</button>
+    <script>
+        function doWhileFunc() {
+            let wCnt = 10;
+            do {
+                console.log(wCnt);
+                wCnt--;
+            } while(wCnt > 0);
+        }
+    </script>
+    <!-- practice -->
+    <h1>10보다 작은 숫자</h1>
+    <input type="number" id="inputNum">
+    <button type="button" onclick="testDoWhile();">출력하기</button>
+    <div id="targetDiv2"></div>
+
+    <script>
+        function testDoWhile() {
+            document.getElementById("targetDiv2").innerHTML = "";
+            let val2 = Number(document.getElementById("inputNum").value);
+            do {
+                // console.log(val2);
+                document.getElementById("targetDiv2").innerHTML += `<h4>${val2}</h4>`;
+                val2++;
+            } while(val2 <= 10);
+        }
+    </script>
+    <h1 onclick="continueTest();">continue</h1>
+    <script>
+        function continueTest() {
+            for(let i=1; i<=10; i++) {
+                if(i%2===0) {
+                    continue;
+                }
+                console.log(i);
+            }         
         }
     </script>
 </body>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+</head>
+<body>
+    <h1 id="red" onclick="chgRed('red');">빨강색</h1>
+    <h1 id="orange" onclick="chgColor('orange');">주황색</h1>
+    <h1 id="gold" onclick="chgEle(this);">노란색</h1>
+    <script>
+        function chgRed() {
+            document.getElementById("red").style.color='red';
+        }
+        function chgColor(colorCode) {
+            document.getElementById(colorCode).style.color = colorCode;
+        }
+        function chgEle(ele) {
+            ele.style.color = ele.id;
+        }
+    </script>
+    <h1>매개변수</h1>
+    <input type="button" value="기본" onclick="printFruit('수박', 35000);">
+    <br>
+    <input type="button" value="순서 뒤집기" onclick="printFruit(15000, '딸기');">
+    <br>
+    <input type="button" value="작은" onclick="printFruit('참외');">
+    <br>
+    <input type="button" value="많은" onclick="printFruit('수박', 19999, '초특가')">
+    <script>
+        function printFruit(name, price) {
+            console.log(`과일 이름 : ${name}`);
+            console.log(`과일 가격 : ${price}`);
+            // if(typeof(name)==="string" && typeof(price)==="number") {
+            //     console.log(`과일 이름 : ${name}`);
+            //     console.log(`과일 가격 : ${price}`);
+            // } else {
+                // console.log("자료형을 준수하여 입력해주세요.");
+            // }
+        }
+        
+    </script>
+    <h1>키오스크</h1>
+    <h4>창립 기념일 행사로 전상품 5%할인됩니다.</h4>
+    <label for="inputPrice">할인 전 : </label>
+    <input type="number" id="inputPrice" readonly value="9400"><br>
+    <input type="radio" name="discount" value="5%" onchange="calcPrice();">기본할인(5%)<br>
+    <input type="radio" name="discount" value="10%" onchange="calcPrice(10);">통신사(10%)<br>
+    <label for="outputPrice">결제액 :</label>
+    <input type="number" id="outputPrice" readonly>
+    <script>
+        function calcPrice(percent = 5) {
+            let price = Number(document.getElementById("inputPrice").value);
+            price *= (1-percent/100);
+            // console.log(price);
+            document.getElementById("outputPrice").value = price;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문 과제</title>
+</head>
+<body>
+    <h1>콤보세트</h1>
+    <label for="amountOfOrder" style="font-weight: bold;">개수:</label>
+    <input type="number" id="amountOfOrder">
+    <button type="button" onclick="order();">주문</button>
+    <br><br>
+    <div id="targetDiv"></div>
+    <script>
+        function order() {
+            document.getElementById("targetDiv").innerHTML = "";
+            let amount = Number(document.getElementById("amountOfOrder").value);
+            for(let i=0; i<amount; i++) {
+                for(let j=0; j<1; j++) {
+                    document.getElementById("targetDiv").innerHTML += `<img src="../resources/popcorn.png">`;
+                }
+                for(let k=0; k<3; k++) {
+                    document.getElementById("targetDiv").innerHTML += `<img src="../resources/coke.png">`;
+                }
+                document.getElementById("targetDiv").innerHTML += `<br>`;
+            }
+        }
+    </script>
+
+    <h1>행 열 갯수 각각 입력받아 테이블 만들기</h1>
+    <button onclick="crtTable();">테이블 생성</button>
+    <br><br>
+
+    <div id="targetTable"></div>
+    <script>
+        function crtTable() {
+            let row = Number(prompt("테이블 행의 갯수는?"));
+            let column = Number(prompt("테이블 열의 갯수는?"));
+
+            let txt = '<table border="1"><tbody>'
+            for(let i=0; i<row; i++) {
+                txt += '<tr>';
+                for(let j=0; j<column; j++) {
+                    txt += `<td>${j+1+i*column}</td>`;
+                }
+                txt += '</tr>';
+            }
+            txt += '</tbody></table>';
+
+            document.getElementById("targetTable").innerHTML = `${txt}`;
+        }
+    </script>
+    <h1>귤농장</h1>
+    <button type="button" onclick="exp();">체험시작</button>
+    <div id="target3"></div>
+    <script>
+        function exp() {
+            document.getElementById("target3").innerHTML = "";
+            for(let i=10; i<=200; i+=10) {
+                document.getElementById("target3").innerHTML +=
+                `<div style='display:inline-block; width:80px;'>
+                    귤 ${i}g<br>
+                    <img src='../resources/gul.png'>
+                </div>`
+            }
+            document.getElementById("target3").innerHTML += `<h1>체험 종료!!</h1>`
+        }
+    </script>
+</body>
+</html>
