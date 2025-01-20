@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제어문(조건문, 반복문)</title>
+</head>
+<body>
+    <h1>if문</h1>
+    <input type="number" id="ifNum">
+    <button type="button" onclick="chkNum();">양수 vs 음수</button>
+    <script>
+        function chkNum() {
+            let val1 = Number(document.getElementById("ifNum").value);
+            if(val1 > 0) {
+                alert("양수");
+            } else if(val1 < 0) {
+                alert("음수");
+            } else {
+                alert("0");
+            }
+        }
+    </script>
+    
+    <h1>로그인</h1>
+    <label for="inputId">아이디 : </label>
+    <input type="text" id="inputId">
+    <br>
+    <label for="inputPw">비밀번호 : </label>
+    <input type="password" id="inputPw">
+    <br>
+    <button type="button" onclick="chkUser();">로그인</button>
+
+    <script>
+        function chkUser() {
+            const id = document.getElementById("inputId").value;
+            const pw = document.getElementById("inputPw").value;
+            if("admin" === id && "admin1234" === pw) {
+                alert('로그인 되었습니다');
+            } else {
+                alert('아이디 혹은 비밀번호가 일치하지 않습니다.')
+            }
+        }
+    </script>
+</body>
+</html>
