@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건문 과제</title>
+</head>
+<body>
+    <h1>날씨 확인</h1>
+    <div>
+        <label for="season">계절</label>
+        <input type="radio" id="spring" name="season" value="0">
+        <label for="spring">봄</label>
+        <input type="radio" id="summer" name="season" value="1">
+        <label for="summer">여름</label>
+        <input type="radio" id="autumn" name="season" value="2">
+        <label for="autumn">가을</label>
+        <input type="radio" id="winter" name="season" value="3">
+        <label for="winter">겨울</label>
+    </div>
+    <div>
+        <label for="temp">기온</label>
+        <input type="number" id="temp">
+    </div>
+    <button type="button" onclick="chkAlter();">확인</button>
+    <script>
+        function chkAlter() {
+            let sValue = document.querySelector('input[name="season"]:checked').value;
+            // console.log(sValue);
+            let tValue = Number(document.getElementById("temp").value);
+            // console.log(tValue);
+            
+            if(sValue === '1') {
+                if(tValue >= 35) {
+                    alert('폭염 경보');
+                } else if(tValue >= 33) {
+                    alert('폭염 주의보');
+                }
+            } else if(sValue = '3') {
+                if(tValue <= -15) {
+                    alert('한파 경보');
+                } else if(tValue <= -12) {
+                    alert('한파 주의보');
+                }
+            }
+        }
+    </script>
+    <h1>스폰지밥, 뚱이, 징징이</h1>
+    <select id="selectImage" onchange="chgImage();">
+        <option value="0">스폰지밥</option>
+        <option value="1">뚱이</option>
+        <option value="2">징징이</option>
+    </select>
+    <img src="../resources/sponge.png" id="sponge" style="width:100px; height:100px; display: none; border-radius: 50%; border: 2px solid greenyellow" >
+    <img src="../resources/dung.png" id="dung" style="width:100px; height:100px; display: none; border-radius: 50%; border: 2px solid greenyellow">
+    <img src="../resources/human (1).png" id="human" style="width:100px; height:100px; display: none; border-radius: 50%; border: 2px solid greenyellow">
+    <script>
+        function chgImage() {
+            let menu = Number(document.getElementById("selectImage").value);
+            document.getElementById("sponge").style.display = 'none';
+            document.getElementById("dung").style.display = 'none';
+            document.getElementById("human").style.display = 'none';
+            switch(menu) {
+            case 0:
+                document.getElementById("sponge").style.display = 'inline';
+                break;
+            case 1:
+            document.getElementById("dung").style.display = 'inline';
+                break;
+            case 2:
+                document.getElementById("human").style.display = 'inline';
+                break;
+            default:
+                break;
+            }
+        }
+    </script>
+</body>
+</html>

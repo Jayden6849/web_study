@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>if문</h1>
-    <input type="number" id="ifNum">
+    <input type="number" id="ifNum" style="background-color:darkkhaki">
     <button type="button" onclick="chkNum();">양수 vs 음수</button>
     <script>
         function chkNum() {
@@ -39,6 +39,146 @@
                 alert('로그인 되었습니다');
             } else {
                 alert('아이디 혹은 비밀번호가 일치하지 않습니다.')
+            }
+        }
+    </script>
+
+    <h1>Switch문</h1>
+    <button type="button" onclick="chkSwitch();">Switch확인</button>
+    <br><br>
+    <script>
+        function chkSwitch() {
+            let target = Number(document.querySelector("#ifNum").value);
+            switch(target) {
+                case 1:
+                    alert('1입니다.');
+                    break;
+                case 2:
+                    alert('2입니다.');
+                    break;
+                case 3:
+                    alert('3입니다.');
+                    break;
+                default:
+                    alert('1, 2, 3 중 하나가 아닙니다.');
+                    break;
+            }
+        }
+    </script>
+    <h1>메뉴 선택</h1>
+    <select onchange="selectMenu();" id="menu">
+        <option value="0">선택하기</option>
+        <option value="1">돼지두루치기</option>
+        <option value="2">마라샹궈</option>
+        <option value="3">참치주먹밥</option>
+    </select>
+    <script>
+        function selectMenu() {
+            let menu = Number(document.getElementById("menu").value);
+
+            switch(menu) {
+                case 1:
+                    alert('돼지두루치기: 15000원');
+                    break;
+                case 2:
+                    alert('마라샹궈: 20000원');
+                    break;
+                case 3:
+                    alert('참치주먹밥: 6000원');
+                    break;
+            }
+        }
+    </script>
+    <h1>for문</h1>
+    <button type="button" onclick="loopFunc();">반복하기</button>
+    <div id="resultDiv"></div>
+    
+    <script>
+        function loopFunc() {
+            document.getElementById("resultDiv").innerHTML = "";
+            for(let i=0; i<10; i++) {
+                if(i===9) {
+                    document.getElementById("resultDiv").innerHTML += '안녕하세요!';
+                } else {
+                    document.getElementById("resultDiv").innerHTML += '안녕하세요!<br>';
+                }
+            }
+        }
+    </script>
+    <h1>중첩 반복문</h1>
+    <button type="button" onclick="enterClass();">교실 입장</button>
+    <p>총 2개의 교실. 하나의 교실에 3명의 학생 입장</p>
+    <script>
+        function enterClass() {
+            for(let i=0; i<2; i++) {
+                console.log(`교실 ${i+1}번 입장`);
+                for(let j=0; j<3; j++) {
+                    console.log(`학생 ${3*i+j+1}번`);
+                }
+                console.log(`교실 ${i+1}번 퇴장`);
+            }
+        }
+    </script>
+    <h1>배경 추가</h1>
+    <button type="button" onclick="chgBack();">배경추가</button>
+    <script>
+        function chgBack() {
+            let arr = document.getElementsByTagName('h1');
+            // console.log(arr);
+            for(let i=0; i<arr.length; i++) {
+                if(i%2===0) {
+                    // console.log(arr[i]);
+                    arr[i].style.backgroundColor='lightpink';
+                } else {
+                    arr[i].style.backgroundColor='lightblue';
+                }
+            }
+        }
+    </script>
+    <h1>break문</h1>
+    <button type="button" onclick="breakTest();">break 동작</button>
+    <script>
+        function breakTest() {
+            // 외부반복문 : 1, 2, 3
+            // 내부반복문 : 1, 2
+            for(let i=0; i<3; i++) {
+                console.log('A');
+                for(let j=0; j<2; j++) {
+                    console.log('B');
+                    // 내부 반복문에 break;
+                    // break;
+                }
+                console.log('C');
+                // 외부 반복문에 break;
+                break;
+            }
+        }
+    </script>
+    <h1>면도기 공장</h1>
+    <label for="prod" style="font-weight: bold;">생산 개수 : </label>
+    <input type="number" id="prod">
+    <button type="button" onclick="produce();">생산</button>
+    <div id="prodTarget">
+        <div id="productSet">
+            
+        </div>
+    </div>
+    <script>
+        function produce() {
+            document.getElementById("productSet").innerHTML = "";
+            let amount = Number(document.getElementById("prod").value);
+            // console.log(amount);
+            for(let i=0; i<amount; i++) {
+                for(let j=0; j<1; j++) {
+                    document.getElementById("productSet").innerHTML += `<img src="../resources/shaving.png" style="width:50px;">`;
+                    
+                }
+                for(let k=0; k<2; k++) {
+                    document.getElementById("productSet").innerHTML += `<img src="../resources/knife.png" style="width:50px;">`;
+                    // break;
+                }
+                break;
+                document.getElementById("productSet").innerHTML += `<br>`;
             }
         }
     </script>
