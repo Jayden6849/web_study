@@ -20,7 +20,7 @@
         }
     </script>
     <h1>선택 검색하기</h1>
-    <form method="get" action="#" style="border: 1px solid black; background-color: whitesmoke;" >
+    <fieldset style="text-align: center; background-color: whitesmoke; border: 1px solid black">
         <legend>검색할 항목을 선택하세요.</legend>
         <div>
             <input id='selectTitle' name="select" type="radio" value="1" onchange="chgMenu();">
@@ -30,7 +30,8 @@
             <input id='selectAuthor' name="select" type="radio" value="3" onchange="chgMenu();">
             <label for="selectAuthor">작성자</label>
         </div>
-    </form>
+    </fieldset>
+
     <hr>
     <div id="div1" style="background-color: gold;height:60px; display:none;">
         <div style="padding-left:10px;">

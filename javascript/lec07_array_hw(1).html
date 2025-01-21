@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 과제</title>
+</head>
+<body>
+    <h1>우리반 성적</h1>
+    <div id="avgDiv">평균 : </div>
+    <label for="inputScore">성적</label>
+    <input type="number" id="inputScore">
+    <button type="button" onclick="addScore();">추가</button>
+    <script>
+        let scoreArr = new Array();
+
+        let addScore = () => {
+            let score = Number(document.getElementById("inputScore").value);
+            scoreArr.push(score);
+            document.getElementById("inputScore").value = "";
+            // console.log(scoreArr);
+            let sum = 0;
+            for(let i=0; i<scoreArr.length; i++) {
+                sum += scoreArr[i]; 
+            }
+            document.getElementById("avgDiv").innerHTML = `평균 : ${sum/scoreArr.length}점`;
+        }
+    </script>
+    <hr>
+    <h3>1번. 배열 실습 문제</h3>
+    <p>다음 보기에 있는 문자열을 가지고 정답과 같이 만드세요<br>
+        (별도의 문자열을 쓰면 안됨)<br>
+        그리고 출력 부분에 출력하세요
+    </p>
+    <fieldset style="border: 1px solid black;">
+        <legend>보기</legend>
+        <div id="eleTxt">
+            n o l e m <br> 
+            r e t a w
+        </div>
+    </fieldset>
+
+    <br>
+    <div id='targetDiv' style="border: 1px solid rgb(139, 62, 62);">이 부분에 정답이 출력될 수 있도록 하세요.</div>
+    <br>
+    <button type="button" onclick="makeWM();">처리</button>
+    <script>
+        let textArr = new Array();
+        let makeWM = () => {
+            let txt = document.getElementById("eleTxt").innerText;
+            txt = txt.replace(`\n`,` `);
+            // console.log(txt);
+            let arrTxt = txt.split(" ");
+            // console.log(arrTxt);
+            arrTxt.reverse();
+            // console.log(arrTxt);
+            txt = arrTxt.join('');
+            document.getElementById('targetDiv').innerText = txt;
+        }
+    </script>
+    <hr>
+    <h3>2번. 배열 실습 문제</h3>
+    <p>문자열을 여러개 입력 받은 후<br>
+    출력 버튼 클릭시 입력했던 모든 문자열이 출력되도록 만드세요<br>
+    예) 개구리 -> 입력, 바나나 -> 입력, 복숭아 -> 입력 출력: 개구리, 바나나, 복숭아
+    </p>
+    <fieldset style="border: 1px solid black">
+        <legend>입력</legend>
+        <div>
+            <input type="text" id="inputText">
+            <button type="button" onclick="inputTxt();">입력</button>
+        </div>
+    </fieldset>
+    <div id="printDiv">이 부분에 정답이 출력 될 수 있도록 하세요</div>
+    <br>
+    <button onclick="printTxt();">출력</button>
+    <script>
+        let txtArr = new Array();
+        
+        let inputTxt = () => {
+            let inputVal = document.getElementById("inputText").value;
+            txtArr.push(inputVal);
+            // console.log(txtArr);
+            document.getElementById("inputText").value = "";
+        }
+        let printTxt = () => {
+            document.getElementById("printDiv").innerHTML = "";
+            
+            for(let i=0; i<txtArr.length; i++) {
+                if(i===txtArr.length-1) {
+                    document.getElementById("printDiv").innerHTML += txtArr[i];
+                } else {
+                    document.getElementById("printDiv").innerHTML += txtArr[i] + ', ';
+                }
+            }
+        }
+    </script>
+    <hr>
+    <h3>3. 배열 실습 문제</h3>
+    <p>다음 보기의 문자열을 바탕으로<br>
+    삭제할 음식과 추가할 음식을 입력받아서<br>
+    지우고, 추가하는 코드를 작성하여라(단, 1개씩 입력)<br><br>
+    예시) 삭제 : 당근 / 추가 : 타코야끼<br>
+    결과 -> 피자 치킨 햄버거 떡볶이 타꼬야끼</p>
+    <fieldset style="border:1px solid black;">
+        <legend>보기</legend>
+        <div id="food" style="height:30px;">피자 치킨 당근 햄버거 떡볶이</div>
+    </fieldset>
+    <br>
+    <input id="deleteFood" type="text" placeholder="삭제할 음식이름을 입력하세요">
+    <input id="insertFood" type="text" placeholder="추가할 음식이름을 입력하세요">
+    <br><br>
+    <div id="submitDiv" style="border: 1px solid rgb(189, 85, 85)">이 부분에 정답이 출력될 수 있도록 하세요.</div>
+    <br>
+    <button type="button" onclick="submit();">처리 및 출력</button>
+    <script>
+        let food = document.getElementById("food").innerText;
+        let foodArr = food.split(' ');
+        // console.log(foodArr);
+        let submit = () => {
+            document.getElementById("submitDiv").innerHTML = "";
+            for(let i=0; i<foodArr.length; i++) {
+                if(foodArr[i]===document.getElementById("deleteFood").value) {
+                    foodArr.splice(i, 1);
+                    i--;
+                }
+            }
+            foodArr.push(document.getElementById("insertFood").value);
+            document.getElementById("deleteFood").value = "";
+            document.getElementById("insertFood").value = "";
+            // console.log(foodArr);
+            for(let i=0; i<foodArr.length; i++) {
+                if(i===foodArr.length-1) {
+                    document.getElementById("submitDiv").innerHTML += foodArr[i];
+                } else {
+                    document.getElementById("submitDiv").innerHTML += foodArr[i] + ' ';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

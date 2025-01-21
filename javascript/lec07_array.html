@@ -184,5 +184,88 @@
             memoArr = new Array();
         }
     </script>
+    <h1>향상된 for문</h1>
+    <button onclick="testFor();">연습</button>
+    <script>
+        const testFor = () => {
+            let nums = [5,6,7,8];
+            nums.forEach(function(ele,idx){
+                console.log(`index(${idx}) : ${ele}`);
+            });
+            nums.forEach((element, index) => {
+                console.log(`index(${index}) : ${element}`);
+            });
+            nums.forEach(val => {
+                console.log(val);
+            });
+        }
+    </script>
+    <h1>배열 정렬</h1>
+    <button onclick="ascendArr();">오름차순</button>
+    <button onclick="descendArr();">내림차순</button>
+    <ol id="sort_ol">
+
+    </ol>
+    <script>
+        let numArr = [3,5,1,8,9,10];
+        let ascendArr = () => {
+            // console.log(`오름차순 정렬합니다.`);
+            document.getElementById("sort_ol").innerHTML = "";
+
+            numArr.sort((x,y) => {
+                if(x < y) return -1;
+                else if(x > y) return 1;
+                else return 0;
+            });
+
+            numArr.forEach(ele=>{
+                document.getElementById("sort_ol").innerHTML += `<li>${ele}</li>`;
+            });
+        }
+        let descendArr = () => {
+            // console.log(`내림차순 정렬합니다.`);
+            document.getElementById("sort_ol").innerHTML = "";
+
+            // numArr.sort((x,y) => {
+            //     if(x < y) return 1;
+            //     else if(x > y) return -1;
+            //     else return 0;
+            // });
+
+            numArr.sort((left, right)=>{
+                return right-left;
+            });
+
+            numArr.forEach(ele=>{
+                document.getElementById("sort_ol").innerHTML += `<li>${ele}</li>`;
+            });
+        }
+    </script>
+    <label id="leader">조윤아, 전홍식, 강성관</label>
+    <br>
+    <button onclick="sortAsc();">오름차순</button>
+    <button onclick="sortDsc();">내림차순</button>
+    <div id="sortTargetDiv"></div>
+
+    <script>
+        let leaderName = document.getElementById("leader").innerText.split(', ');
+        console.log(leaderName);
+        let sortAsc = () => {
+            document.getElementById("sortTargetDiv").innerHTML = "";
+            leaderName.sort();
+            // console.log(leaderName);
+            document.getElementById("sortTargetDiv").innerHTML += leaderName;
+        }
+        let sortDsc = () => {
+            document.getElementById("sortTargetDiv").innerHTML = "";
+            leaderName.sort((left,right)=>{
+                if(left < right) return 1;
+                else if(left > right) return -1;
+                else return 0;
+            });
+            // console.log(leaderName);
+            document.getElementById("sortTargetDiv").innerHTML += leaderName; 
+        }
+    </script>
 </body>
 </html>
