@@ -126,5 +126,63 @@
             console.log(result.indexOf(`치즈`));
         }
     </script>
+    <h1>배열 -> 문자열</h1>
+    <button type="button" onclick="arrToStr();">연습</button>
+    <script>
+        let arrToStr = () => {
+            let food = [`떡볶이`,`튀김`,`순대`];
+            let result = food.join('+');
+            console.log(result);
+        }            
+    </script>
+    <h1>배열 뒤집기</h1>
+    <button onclick="otherWay();">반대로</button>
+    <script>
+        let otherWay = () => {
+            let alpha = [`a`,`b`,`c`];
+            alpha.reverse();
+            console.log(alpha);
+        }
+    </script>
+    <h1 onclick="dataChange();">push, pop</h1>
+    <script>
+        let dataChange = () => {
+            let names = [`철수`,`영희`];
+            names.push(`길동`);
+            names.unshift(`지은`);
+            console.log(names);
+            names.pop();
+            console.log(names);
+        }
+    </script>
+    <h1>기록하기</h1>
+    <input type="text" id="memoInput">
+    <button type="button" onclick="addMemo();">입력</button>
+    <button type="button" onclick="showMemo();">출력</button>
+    <button type="button" onclick="resetMemo();">배열초기화</button>
+    <div id="targetDiv"></div>
+    <script>
+        let memoArr = new Array();
+
+        let addMemo = () => {
+            // input에 입력한 문자 정보 받아오기
+            let inputText = document.getElementById("memoInput").value;
+            // memoArr 배열에 요소로 추가하기
+            memoArr.push(inputText);
+            document.getElementById("memoInput").value = "";
+            // console.log(memoArr);
+        }
+        let showMemo = () => {
+            document.getElementById("targetDiv").innerHTML = `<ul>`;
+            // memoArr 배열에 기록된 모든 정보를 순서가 없는 목록 형태로 출력
+            for(let i=0; i<memoArr.length; i++) {
+                document.getElementById("targetDiv").innerHTML += `<li>${memoArr[i]}</li>`
+            }
+            document.getElementById("targetDiv").innerHTML += `</ul>`;
+        }
+        let resetMemo = () => {
+            memoArr = new Array();
+        }
+    </script>
 </body>
 </html>
