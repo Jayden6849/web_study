@@ -57,5 +57,106 @@
             document.getElementById("outputPrice").value = price;
         }
     </script>
+    <h1>가변인자</h1>
+    <button type="button" onclick="sumNum(2, 3, 1);">실행확인</button>
+    <script>
+        function sumNum() {
+            let result = 0;
+            for(let i=0; i<arguments.length; i++) {
+                result += arguments[i];
+            }
+            console.log(result);
+            console.log(arguments[0]);
+            console.log(arguments[1]);
+            console.log(arguments[2]);
+        }
+        
+    </script>
+    <h1>반환값</h1>
+    <button onclick="alert(calcDay());">오늘 날짜</button>
+    <script>
+        function calcDay() {
+            const date = new Date();
+            const year = date.getFullYear();
+            return `오늘은 ${year}년입니다.`;
+        }
+    </script>
+    <h1>선언적 함수</h1>
+    <button onclick="basicFunc();">테스트</button>
+    <script>
+        function basicFunc() {
+            alert("선언1");
+        }
+        function basicFunc() {
+            alert("선언2");
+        }
+    </script>
+    <h1>익명 함수</h1>
+    <button onclick="annonyFunc();">익명테스트</button>
+    <script>
+        let annonyFunc = function() {
+           alert(`익명함수!`); 
+        }
+        // let annonyFunc = function() {
+            
+        // }
+    </script>
+    <h1>화살표 함수</h1>
+    <button onclick="arrowFunc();">화살표테스트1</button>
+    <button onclick="arrowFunc2('화살표');">화살표테스트2</button>
+    <button onclick="arrowFunc3('화살표', '살');">화살표테스트3</button>
+    <button onclick="arrowFunc4('화살표입니다.');">화살표테스트4</button>
+    <script>
+        // 1. 매개변수 없을 때
+        let arrowFunc = () => {
+            alert(`화살표함수!`);
+        }
+        // 2. 매개변수 있을 때
+        let arrowFunc2 = (text) => {
+            alert(`${text}함수입니다!`)
+        }
+        // 3. 반환값이 간단할 때(한 줄일 때는 중괄호를 생략가능)
+        let arrowFunc3 = (str, s) => alert(str.indexOf(s));
+        // 4. 매개변수가 하나일 때(매개변수가 하나라면 괄호를 생략가능)
+        let arrowFunc4 = str => alert(str);
+    </script>
+    <!-- practice -->
+    <h1>선언적함수, 익명함수, 화살표함수</h1>
+    <button onclick="console.log(cal1(11, 41));">선언적함수</button>
+    <button onclick="console.log(cal2(11, 41));">익명함수</button>
+    <button onclick="console.log(cal3(11, 41));">화살표함수</button>
+    <script>
+        function cal1(a,b){
+        	return a*b;
+        }
+        let cal2 = function (a,b){
+        	return a*b;
+        }
+        let cal3 = (a,b) => {
+        	return a*b;
+        }
+    </script>
+    <h1>익명함수 활용</h1>
+    <button onclick="timerFunc();">1초 뒤 동작</button>
+    <script>
+        let timerFunc = () => {
+            setTimeout(function(){console.log(`1초 지났어요!`);},1000);
+        }
+    </script>
+    <button onclick="returnFunc(`returnFunc`)(`test`);">반환값 테스트</button>
+    <script>
+        const returnFunc = (str) => {
+            const innerFunc = (msg) => {console.log(str+" : "+msg);}
+            return innerFunc;
+        }
+    </script>
+    <div id="instant_div">
+        즉시실행함수 테스트
+    </div>
+    <script>
+        (function(){
+            document.getElementById("instant_div").innerHTML = `<h1>확인</h1>`;
+        })();
+    </script>
 </body>
 </html>

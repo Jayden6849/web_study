@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 과제1</title>
+</head>
+<body>
+    <h1>둥글둥글 테두리</h1>
+    <img id="imgSrc" src="../resources/squidward.gif" style="width:150px;height:150px;border: 4px dotted green;border-radius:40px;">
+    <br>
+    <input id="range" type="range" onchange="radiusAdd(this.value);" value="40" min="0" max="75" step="5">
+    <div id="rangeDiv" style="display: inline;">40</div>
+    <script>
+        let radiusAdd = (round) => {
+            // console.log(typeof round);
+            document.getElementById("rangeDiv").innerHTML = round;
+            document.getElementById("imgSrc").style.borderRadius = round+'px';
+            // console.log(document.getElementById("imgSrc").style.borderRadius);
+        }
+    </script>
+    <h1>선택 검색하기</h1>
+    <form method="get" action="#" style="border: 1px solid black; background-color: whitesmoke;" >
+        <legend>검색할 항목을 선택하세요.</legend>
+        <div>
+            <input id='selectTitle' name="select" type="radio" value="1" onchange="chgMenu();">
+            <label for="selectTitle">제목</label>
+            <input id='selectDate' name="select" type="radio" value="2" onchange="chgMenu();">
+            <label for="selectDate">날짜</label>
+            <input id='selectAuthor' name="select" type="radio" value="3" onchange="chgMenu();">
+            <label for="selectAuthor">작성자</label>
+        </div>
+    </form>
+    <hr>
+    <div id="div1" style="background-color: gold;height:60px; display:none;">
+        <div style="padding-left:10px;">
+            <label for="inputTitle">검색할 제목을 입력하세요 : </label>
+            <br>
+            <input type="text" id="inputTitle">
+            <button>검색</button>
+        </div>
+    </div>
+    <div id="div2" style="background-color: gold;height:60px; display:none;">
+        <div style="padding-left:10px;">
+            <label for="inputDate">검색할 날짜를 입력하세요 : </label>
+            <br>
+            <input type="date">
+            ~
+            <input type="date">
+            <button>검색</button>
+        </div>
+    </div>
+    <div id="div3" style="background-color: gold;height:60px; display:none;">
+        <div style="padding-left:10px;">
+            <label for="inputAuthor">검색할 작성자를 입력하세요 : </label>
+            <br>
+            <input type="text" id="inputAuthor">
+            <button>검색</button>
+        </div>
+    </div>
+    <script>
+        let chgMenu = () => {
+            // console.log(`체크`);
+            // console.log(document.getElementsByName("select")[0].value);
+            let chkMenu = Number(document.querySelector('input[name="select"]:checked').value);
+            // console.log(chkMenu);
+            switch(chkMenu) {
+            case 1:
+                document.getElementById("div2").style.display = 'none';
+                document.getElementById("div3").style.display = 'none';
+                document.getElementById("div1").style.display = 'block';
+                document.getElementById("div1").style.display = 'flex';
+                document.getElementById("div1").style.alignItems = 'center';
+                break;
+            case 2:
+                document.getElementById("div1").style.display = 'none';
+                document.getElementById("div3").style.display = 'none';
+                document.getElementById("div2").style.display = 'block';
+                document.getElementById("div2").style.display = 'flex';
+                document.getElementById("div2").style.alignItems = 'center';
+                break;
+            case 3:
+                document.getElementById("div1").style.display = 'none';
+                document.getElementById("div2").style.display = 'none';
+                document.getElementById("div3").style.display = 'block';
+                document.getElementById("div3").style.display = 'flex';
+                document.getElementById("div3").style.alignItems = 'center';
+                break;
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열</title>
+</head>
+<body>
+    <h1>선언</h1>
+    <button onclick="createArray();">결과 확인</button>
+    <script>
+        const createArray = () => {
+            // 리터럴 방식
+            let arr1 = [];
+            let arr2 = ['해', '달', '별'];
+            // 생성자 방식
+            let arr3 = new Array();
+            let arr4 = new Array(5);
+            let arr5 = new Array('산', '바다');
+            
+            // console.log(arr1, typeof arr1);
+            // console.log(arr2, typeof arr2);
+            // console.log(arr3, typeof arr3);
+            // console.log(arr4, typeof arr4);
+            // console.log(arr5, typeof arr5);
+        }
+    </script>
+    <h1>값 대입</h1>
+    <button onclick="setVal();">대입 연습</button>
+    <button onclick="getVal();">호출</button>
+    <script>
+        let globalArr = new Array();
+
+        let setVal = () => {
+            globalArr[0] = 100;
+            globalArr[1] = `김철수`;
+            globalArr[2] = true;
+            globalArr[3] = () => {alert(`배열안!`);};
+
+            globalArr[5] = `test`;
+            // for(let i=0; i<5; i++) {
+            //     globalArr[i] = i*2;
+            // }
+        }
+
+        let getVal = () => {
+            // 1. 인덱스를 기준으로 접근
+            // console.log(globalArr[3]);
+            globalArr[3]();
+            
+            // 2. 반복문으로 접근
+            // for(let i=0; i<globalArr.length; i++) {
+            //     console.log(globalArr[i]);
+            // }
+        }
+    </script>
+    <h1>split</h1>
+    <span>tom,json,maria,my</span>
+    <br>
+    <button onclick="chgStrToArr();">2번째 데이터 가져오기</button>
+    <br>
+    <span id="resultSpan"></span>
+    <script>
+        let chgStrToArr = () => {
+            let str = document.getElementsByTagName('span')[0].innerHTML;
+            // console.log(str);
+            let arr = str.split(",");
+            // console.log(arr);
+            // console.log(arr[1]);
+            document.getElementById("resultSpan").innerHTML = arr[1];
+            
+            if(arr.includes(`java`)){
+                console.log("Hello World!");
+            } else {
+                console.log("java를 포함하지 않음");
+            }
+
+            if(arr.indexOf(`java`) != -1) {
+                console.log("Hello World!");
+            } else {
+                console.log("java를 포함하지 않음");
+            }
+
+            if(arr.indexOf(`json`) != -1) {
+                document.getElementById("resultSpan").innerHTML += `<br> ${arr[arr.indexOf("json")]} 출력`;
+            }
+        }
+    </script>
+    <!-- practice -->
+    <h1>사과를 찾아라</h1>
+    <label id="la1">사과,바나나,당근</label>
+    <br>
+    <button onclick="chkText();">버튼</button>
+    <div id="targetLabel"></div>
+    <script>
+        let chkText = () => {
+            let strLabel = document.getElementById("la1").innerText;
+            let arrLabel = strLabel.split(",");
+           alert(`사과의 인덱스 : ${arrLabel.indexOf(`사과`)}`);
+        }
+    </script>
+    <h1>배열 합치기</h1>
+    <button onclick="concatArr();">연습</button>
+    <script>
+       let concatArr = () => {
+            let student1 = [`tom`,`maria`];
+            let student2 = [`amy`, `john`];
+            let student3 = [`jack`, `scarlett`];
+            let result = student1.concat(student2, student3);
+            console.log(result);
+        }
+    </script>
+    <!-- practice -->
+    <h1></h1>
+    <label id="la2">김밥, 치즈, 떡볶이, 햄버거</label>
+    <br>
+    <button onclick="concatArr2();">과일과 분식</button>
+    <script>
+        let concatArr2 = () => {
+            let strLabel1 = document.getElementById("la1").innerText;
+            let arrLabel1 = strLabel1.split(",");
+            let strLabel2 = document.getElementById("la2").innerText;
+            let arrLabel2 = strLabel2.split(", ");
+            let result = arrLabel1.concat(arrLabel2);
+            console.log(result);
+            console.log(result.indexOf(`치즈`));
+        }
+    </script>
+</body>
+</html>
