@@ -39,11 +39,40 @@
     <p>1~45 사이의 숫자중에서 랜덤값 6개 뽑기<br>
     * 숫자값 중복 불가<br>
     * 오름차순 정렬</p>
-    <button>로또</button>
-    <div>
+    <button onclick="rndSelect();">로또</button>
+    <div id="targetDiv">
 
     </div>
-    <script></script>
+    <script>
+        let lottoArr = new Array();
+        
+        let rndSelect = () => {
+            document.getElementById("targetDiv").innerHTML = "";
+            lottoArr = [];
+            for (let i=0; i<6; i++) {
+                let rndBall = Math.floor(Math.random() * 45) + 1;
+                if(!lottoArr.includes(rndBall)) {
+                    lottoArr.push(rndBall);
+                } else {
+                    i--;
+                }
+            }
+            lottoArr.sort((left, right) => {
+                if(left > right) return 1;
+                else if(left < right) return -1;
+                else return 0;
+            });
+
+            // console.log(lottoArr);
+            for(let i=0; i<lottoArr.length; i++) {
+                if(i === lottoArr.length-1) {
+                    document.getElementById("targetDiv").innerHTML += lottoArr[i];    
+                } else {
+                    document.getElementById("targetDiv").innerHTML += lottoArr[i] + '<br>';
+                }
+            }
+        }
+    </script>
     <h1>랜덤 배경색</h1>
     <button onclick="chgColor();">바꾸기</button>
     <script>
