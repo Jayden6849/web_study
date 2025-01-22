@@ -17,7 +17,8 @@
         <br>
         <label for="inputFigure">특징</label>
         <input id="inputFigure">
-        <br><br>
+    </fieldset>
+        <br>
         <button onclick="insertFriend();">등록</button>
         <button onclick="printFriend();">확인</button>
         <br><br>
@@ -33,6 +34,7 @@
                 
             </tbody>
         </table>
+
         <style>
             table th {border : 1px solid black;}
             table td {border : 1px solid black;}
@@ -68,32 +70,156 @@
                 };
             }
         </script>
-    </fieldset>
+    
+    <style>
+        .targetTable {width:250px;}
+        .targetTable th{height: 40px;}
+        .targetTable td{height: 30px;}
+    </style>
     <h1>학생 정보</h1>
-    <table>
-        <thead>
+    <div id="targetDiv" style="display:flex; justify-content: center; visibility: hidden;">
+        <table class="targetTable" style="border: 1px solid black;">
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>나이</th>
+                    <th>주소</th>
+                </tr>
+            </thead>
+            <tbody id="target">
+    
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align: center;">
+        <div style="color:crimson">학생정보 테이블</div>
+        <button onclick="saveInfo();">입력 및 출력</button>
+    </div>
+
+    <script>
+        let objectArr = [];
+
+        let saveInfo = () => {
+            document.getElementById("target").innerHTML = ``;
+
+            document.getElementById(`targetDiv`).style.visibility = `visible`;
+            for(let i=0; i<3; i++) {
+                let studentName = prompt(`이름을 입력하세요 : `);
+                let studentAge = Number(prompt(`나이를 입력하세요 : `));
+                let studentAddr = prompt(`주소를 입력하세요 `);
+
+                document.getElementById("target").innerHTML += `<tr><td>${studentName}</td><td>${studentAge}</td><td>${studentAddr}</td></tr>`;
+                
+                let student = setStudent(studentName, studentAge, studentAddr);
+                objectArr.push(student);
+            }
+
+            console.log(objectArr);
+
+        }
+
+        let setStudent = (studentName, studentAge, studentAddr) => {
+            return {
+                studentName : studentName,
+                studentAge : studentAge,
+                studentAddr : studentAddr
+            };
+        }
+    </script>
+    <h1>검색이 가능한 표</h1>
+    <p>문제 이미지에 있는 대로 people 객체 배열을 선언한 뒤, 이를 활용하여 아래 기능이 동작하도록 만드세요.</p>
+    <button onclick="searchAll();">전체 데이터 출력</button>
+    <button onclick="searchByAge();">20대 출력</button>
+    <input id="inputAddr" placeholder="주소를 입력하세요.">
+    <button onclick="searchByAddr();">주소 검색</button>
+    <br><br>
+    <style>
+        #searchTable {width: 250px;}
+    </style>
+    <table id="searchTable" style="border: 1px solid black; border-collapse: collapse;">
+        <thead style=" background-color: whitesmoke;">
             <tr>
                 <th>이름</th>
                 <th>나이</th>
+                <th>성별</th>
                 <th>주소</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="searchTarget">
 
         </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="3">
-                    <div style="color:crimson">학생정보 테이블</div>
-                    <button>입력 및 출력</button>
-                </td>
-            </tr>
-        </tfoot>
     </table>
-
     <script>
-        
-    </script>
+        let setUser = (userName, userAge, userGender, userAddr) => {
+            return {
+                userName : userName,
+                userAge : userAge,
+                userGender : userGender,
+                userAddr : userAddr
+            };
+        }
 
+        let userArr = [setUser(`김철수`, 23, `M`, `동작구`), setUser(`홍길동`, 19, `M`, `금천구`), setUser(`이영희`, 16, `F`, `관악구`)];
+        console.log(userArr);
+
+        let searchAll = () => {
+            document.getElementById(`searchTarget`).innerHTML = "";
+            for(let i=0; i<userArr.length; i++) {
+                document.getElementById(`searchTarget`).innerHTML += `<tr><td>${userArr[i][`userName`]}</td><td>${userArr[i][`userAge`]}</td><td>${userArr[i][`userGender`]}</td><td>${userArr[i][`userAddr`]}</td></tr>`;
+            }
+        }
+        let searchByAge = () => {
+            document.getElementById(`searchTarget`).innerHTML = "";
+            for(let i=0; i<userArr.length; i++) {
+                if(20<=userArr[i][`userAge`] && userArr[i][`userAge`]<30) {
+                    document.getElementById(`searchTarget`).innerHTML += `<tr><td>${userArr[i][`userName`]}</td><td>${userArr[i][`userAge`]}</td><td>${userArr[i][`userGender`]}</td><td>${userArr[i][`userAddr`]}</td></tr>`;
+                }
+            }
+        }
+        let searchByAddr = () => {
+            document.getElementById(`searchTarget`).innerHTML = "";
+            let addr = document.getElementById("inputAddr").value;
+            for(let i=0; i<userArr.length; i++) {
+                if(addr === userArr[i][`userAddr`]) {
+                    document.getElementById(`searchTarget`).innerHTML += `<tr><td>${userArr[i][`userName`]}</td><td>${userArr[i][`userAge`]}</td><td>${userArr[i][`userGender`]}</td><td>${userArr[i][`userAddr`]}</td></tr>`;
+                }
+            }
+        }
+    </script>
+    <h1>표 만들기</h1>
+    <button onclick="createCustomers();">생성</button>
+    <br><br>
+    <table style="border: 1px solid black; border-collapse: collapse; width: 200px;">
+       <thead style="background-color: whitesmoke;">
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>성별</th>
+            </tr>
+       </thead>
+       <tbody id="targetBody" style="text-align: center;">
+
+       </tbody> 
+    </table>
+    <script>
+        let customerArr = new Array();
+
+        let setCustomers = (name, age, gender) => {
+            return {
+                name : name,
+                age : age,
+                gender : gender
+            };
+        };
+
+        let createCustomers = () => {
+            document.getElementById("targetBody").innerHTML = "";
+            customerArr = [];
+            customerArr.push(setCustomers(`김철수`, 21, `남`), setCustomers(`이영희`, 36, `여`), setCustomers(`gildong`, 51, `M`));
+            for(let i=0; i<customerArr.length; i++) {
+                document.getElementById("targetBody").innerHTML += `<tr><td>${customerArr[i][`name`]}</td><td>${customerArr[i][`age`]}</td><td>${customerArr[i][`gender`]}</td></tr>`
+            }
+        }
+    </script>
 </body>
 </html>

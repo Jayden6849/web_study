@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내장객체 실습과제</title>
+</head>
+<body id="bodyTag">
+    <h1>내맘대로 랜덤</h1>
+    <label for="startNum">시작 </label>
+    <input type="number" id="startNum">
+    <br>
+    <label for="endNum">종료 </label>
+    <input type="number" id="endNum">
+    <br>
+    <button type="button" onclick="alertNumArr();">실행</button>
+    <script>
+        let alertNumArr = () => {
+            let rndArr = new Array(10);
+            let start = Number(document.getElementById(`startNum`).value);
+            let end = Number(document.getElementById(`endNum`).value);
+            // console.log(start, end);
+
+            for(let i=0; i<10; i++) {
+                rndArr[i] = Math.floor(Math.random() * (end - start + 1)) + start;
+            }
+            alert(rndArr);
+        }
+    </script>
+    <h1>Math 객체 연습</h1>
+    <p id="floor">Floor: 7.8</p>
+    <p id="round">Round: 5.5</p>
+    <p id="ceil">Ceil: 3.2</p>
+    <p id="abs">Abs: -15</p>
+    <p id="pow">Pow: 3^4</p>
+    <button onclick="applyMathFunctions();">Math 함수 적용</button>
+    <script src="../resources/basic.js"></script>
+    <h1>로또 번호 출력하기</h1>
+    <p>1~45 사이의 숫자중에서 랜덤값 6개 뽑기<br>
+    * 숫자값 중복 불가<br>
+    * 오름차순 정렬</p>
+    <button>로또</button>
+    <div>
+
+    </div>
+    <script></script>
+    <h1>랜덤 배경색</h1>
+    <button onclick="chgColor();">바꾸기</button>
+    <script>
+        let chgColor = () => {
+            let rndNum1 = Math.floor(Math.random()*128);
+            let rndNum2 = Math.floor(Math.random()*128);
+            let rndNum3 = Math.floor(Math.random()*128);
+            let rndColor = `rgb(${rndNum1}, ${rndNum2}, ${rndNum2})`
+            document.getElementById(`bodyTag`).style.backgroundColor = rndColor;
+        }
+    </script>
+</body>
+</html>
