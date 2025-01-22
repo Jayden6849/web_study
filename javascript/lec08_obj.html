@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체</title>
+</head>
+<body>
+    <h1>객체 생성</h1>
+    <!-- 1번. 리터럴 방식 -->
+    <button onclick="makeObj1();">리터럴</button>
+    <script>
+        let makeObj1 = () => {
+            let person = {};
+            person['name'] = '홍길동';
+            person['age'] = 50;
+            console.log(person);
+
+            let student = {
+                name : '김철수',
+                age : 20,
+                hobby : [`독서`, `영화감상`],
+                toString : () => {
+                    return this.name + '은(는) ' + this.age + `세 입니다.`;
+                },
+                item : {
+                    name : `샤프`,
+                    price : 20000
+                }
+            };
+            console.log(student);
+        }
+        </script>
+        <!-- 2번. 생성자 방식 -->
+        <button onclick="createObj2();">생성자</button>
+        <script>
+            let createObj2 = () => {
+                let member = new Object();
+                member[`phone`] = '01011112222';
+                console.log(member);
+            }
+        </script>
+        <button onclick="testObj();">생성자함수</button>
+        <script>
+            let testObj = () => {
+                let student = Student(`이영희`, 1);
+                console.log(student);
+            }
+
+            let Student = (name, grade) => {
+                return {
+                    name : name,
+                    grade : grade
+                };
+            }
+        </script>
+        <!-- practice -->
+        <h1 style="position: relative;">
+            <img src="../resources/animated_car.gif" style="width:50px;">
+            자동차 만들기
+            <img src="../resources/car1.png" style="width:50px; background-color: white; position: inherit; top: 12px">
+        </h1>
+        <label>브랜드 : </label>
+        <input type="text" id="carBrand">
+        <br>
+        <label> 모델명 : </label>
+        <input type="text" id="carModel">
+        <br>
+        <label> 제조연도 : </label>
+        <input type="text" id="carYear">
+        <br>
+        <button onclick="createCar();">만들기</button>
+        <button onclick="resetCar();">초기화</button>
+        <script>
+            let carArr = new Array();
+
+            let createCar = () => {
+                let brand = document.getElementById("carBrand").value;
+                let model = document.getElementById("carModel").value;
+                let year = document.getElementById("carYear").value;
+                let car = Car(brand, model, year);
+
+                carArr.push(car);
+
+                document.getElementById("carBrand").value = "";
+                document.getElementById("carModel").value = "";
+                document.getElementById("carYear").value = "";
+
+                console.log(carArr);
+            }
+
+            let resetCar = () => {
+                carArr = new Array();
+                console.log(carArr);
+            }
+
+            let Car = (brand, model, year) => {
+                return {
+                    brand : brand,
+                    model : model,
+                    year : year
+                };
+            };
+        </script>
+
+        <h1>객체의 속성 추가 및 삭제</h1>
+        <button onclick="addProp();">추가</button>
+        <button onclick="removeProp();">삭제</button>
+        <script>
+            let sampleObj = {};
+
+            let addProp = () => {
+                // console.log(`test`);
+                sampleObj[`f`+`u`+`n`] = () => {
+                    cosole.log(`확인`);
+                }
+                sampleObj.num = 100;
+                console.log(SampleObj);
+            }
+
+            let removeProp = () => {
+                // console.log(`test`);
+                delete(sampleObj[`num`]);
+                delete(sampleObj.fun);
+            }
+        </script>
+        <h1>객체 호출</h1>
+        <button onclick="makePerson();">생성</button>
+
+        <script>
+            let makePerson = () => {
+                let p = setPerson(`수철`, true, [`수영`, `골프`], {name:`만년필`, price:100});
+                // console.log(p);
+                // 1. 리터럴에 접근하는 방법
+                let val1 = p.name;
+                let val2 = p[`name`];
+                let word = `Student`;
+                let val3 = p[`is`+word];
+                // console.log(val1, val2, val3);
+
+                // 2. 배열에 접근하는 방법
+                let arr1 = p[`hobby`];
+                let arr2 = p.hobby;
+                let val4 = p[`hobby`][0];
+                    val5 = p.hobby[1];
+                    val6 = arr1[0];
+                    val7 = arr2[1];
+                // console.log(val4, val5, val6, val7);
+                let strHobby = p.hobby.join(`+`);
+                // console.log(strHobby);
+                p[`hobby`].forEach((element, index) => {
+                    console.log(`${element}(${index})`);
+                });
+
+                // 3. 객체에 접근하는 방법
+                let val8 = p[`item`][`name`];
+                let val9 = p[`item`][`price`];
+                console.log(val8, val9);
+
+                // 4. 메소드에 접근하는 방법
+                console.log(p.callName());
+                console.log(p[`callName`]());
+                p.testFunc();
+
+                // 5. for in
+                for(key in p) {
+                    console.log(key);
+                    let valu = p[key];
+                    console.log(valu);
+                }
+            }
+            let setPerson = (name, bool, arr, item) => {
+                let obj = {
+                    name : name,
+                    isStudent : bool,
+                    hobby : arr,
+                    item : item,
+                    callName : () => {
+                        return `나의 이름은 ${name}입니다.`;
+                    },
+                    testFunc : () => {
+                        if(this.isStudent) {
+                            console.log(`학생 ${name}`);
+                        } else {
+                            console.log(`${name}님`)
+                        }
+                    }
+                };
+                return obj;
+            }
+        </script>
+        <!-- practice -->
+        <h1>빵 좋아해요?</h1>
+        <fieldset>
+            <legend>출력</legend>
+            <label>메뉴명 : </label>
+            <input id="outputMenu" type="text" readonly>
+            <br>
+            <label>가격 : </label>
+            <input id="outputPrice" type="number" readonly>
+        </fieldset>
+        <br>
+        <button onclick="inputPrompt();">입력</button>
+        <button onclick="printInfo();">출력</button>
+        <script>
+            let menuName = "";
+            let price = 0;
+            let bread = {};
+
+            let inputPrompt = () => {
+                document.getElementById("outputMenu").value = "";
+                document.getElementById("outputPrice").value = "";
+
+                menuName = prompt(`메뉴명 :`);
+                price = prompt(`가격 : `);
+
+                bread = setBread(menuName, price);
+                // console.log(bread);
+            }
+
+            let printInfo = () => {
+                // console.log(`test`);
+
+                // console.log(bread[`menuName`]);
+                // console.log(bread[`price`]);
+                if(bread[`menuName`] != null && bread[`price`] != null) {
+                    document.getElementById("outputMenu").value = bread[`menuName`];
+                    document.getElementById("outputPrice").value = bread[`price`];
+                } else if(bread[`menuName`] == null && bread[`price`] == null) {
+                    alert(`정보가 입력되지 않았어요.`);
+                } else if(bread[`menuName`] == null) {
+                    alert(`메뉴명이 입력되지 않았어요.`);
+                } else if(bread[`price`] == null) {
+                    alert(`가격이 입력되지 않았어요.`);
+                }
+            }
+
+            let setBread = (menuName, price) => {
+                return {
+                    menuName : menuName,
+                    price : price
+                };
+            };
+        </script>
+        <hr>
+        <button onclick="thisFunc();">this Test</button>
+        <script>
+            const thisFunc = () => {
+                account(`철수`).printName();
+            }
+            const account = (name) => {
+                return {
+                    name : name,
+                    printName : () => {
+                        console.log(this);
+                    }
+                };
+            };
+        </script>
+        <button onclick="showThis(this);">arrow this</button>
+        <script>
+            let showThis = (element) => {
+                console.log(element);
+            }
+        </script>
+        <h1>객체 배열</h1>
+        <script>
+            let customers = [
+                {
+                    name : `영희`,
+                    age : 24
+                }
+            ];
+            console.log(customers[0][`name`]);
+            customers.push({name:`철수`,gender:'M'});
+            customers.unshift({name:`길동`,age:51});
+            customers.pop();
+            customers.shift();
+            console.log(customers);
+        </script>
+</body>
+</html>

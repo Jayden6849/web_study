@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 과제1</title>
+</head>
+<body>
+    <h1>출석부</h1>
+    <fieldset>
+        <legend>강아지 정보</legend>
+        <label for="inputName">이름</label>
+        <input id="inputName">
+        <br>
+        <label for="inputAge">나이</label>
+        <input id="inputAge">
+        <br>
+        <label for="inputFigure">특징</label>
+        <input id="inputFigure">
+        <br><br>
+        <button onclick="insertFriend();">등록</button>
+        <button onclick="printFriend();">확인</button>
+        <br><br>
+        <table id="printTable" style='border:1px solid black; width:300px; border-collapse: collapse; visibility: hidden;'>
+            <thead>
+                <tr style='background-color: whitesmoke;'>
+                    <th>이름</th>
+                    <th>나이</th>
+                    <th>특징</th>
+                </tr>
+            </thead>
+            <tbody id="printBody" style="text-align: center;">
+                
+            </tbody>
+        </table>
+        <style>
+            table th {border : 1px solid black;}
+            table td {border : 1px solid black;}
+        </style>
+        <script>
+            let friendArr = new Array();
+
+            let insertFriend = () => {
+                let name = document.getElementById("inputName").value;
+                let age = Number(document.getElementById("inputAge").value);
+                let personality = document.getElementById("inputFigure").value;
+                // console.log(name, age, personality);
+                
+                let friend = setFriend(name, age, personality);
+                friendArr.push(friend);
+                // console.log(friendArr);
+            }
+            let printFriend = () => {
+                // console.log(friendArr);
+                document.getElementById(`printTable`).style.visibility = `visible`;
+
+                document.getElementById("printBody").innerHTML = "";
+
+                for(let i=0; i<friendArr.length; i++) {
+                    document.getElementById("printBody").innerHTML += `<tr><td>${friendArr[i].name}</td><td>${friendArr[i].age}</td><td>${friendArr[i].personality}</td></tr>`;
+                }
+            }
+            let setFriend = (name, age, personality) => {
+                return {
+                    name : name,
+                    age : age,
+                    personality : personality
+                };
+            }
+        </script>
+    </fieldset>
+    <h1>학생 정보</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <div style="color:crimson">학생정보 테이블</div>
+                    <button>입력 및 출력</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script>
+        
+    </script>
+
+</body>
+</html>

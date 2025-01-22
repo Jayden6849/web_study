@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내장 객체</title>
+</head>
+<body>
+    <!-- 1. String 객체 -->
+    <select id="fruit" onchange="chgFruit();">
+        <option value="">선택하기</option>
+        <option value="apple">사과</option>
+        <option value=" banana ">바나나</option>
+        <option value="PEACH">복숭아</option>
+    </select>
+    <script>
+        let chgFruit = () => {
+            let val = document.getElementById("fruit").value.trim().toUpperCase();
+            
+            switch(val) {
+                case `APPLE`: alert(`사과사세요~`); break;
+                case `BANANA`: alert(`바나나입니다!`); break;
+                case `PEACH`: alert(`복숭아 신상`); break;
+            }
+        }
+    </script>
+    <h1>댓글 입력창</h1>
+    <textarea id="comment" onkeyup="getLength(this);" maxlength="100" placeholder="100자 이내로 적어주세요.">
+    </textarea>
+    <span id="cnt">0</span>
+    <span>/100</span>
+    <script>
+        let getLength = function(element){
+            // console.log(element.value);
+            document.getElementById(`cnt`).innerText = element.value.length;
+            for(let i=0; i<element.value.length; i++) {
+                if(element.value.charAt(i) == 'a') {
+                    alert(`10초간 문자를 작성할 수 없습니다.`);
+                    element.value.charAt(i) = '';
+                }
+            }
+        }
+    </script>
+    <br><br>
+    <input type="text" id="address" value="서울 금천구 가산디지털2로 95 3층 구디아카데미 B반" style="width:500px">
+    <button onclick="findGu();">금천구 찾기!</button>
+    <script>
+        let findGu = () => {
+            let addr = document.getElementById(`address`).value;
+            let idx1 = addr.indexOf(`구`);
+            let idx2 = addr.lastIndexOf(`구`);
+            // console.log(idx1, idx2);
+            let result = addr.substr(addr.indexOf(`금`), 3);
+            console.log(result);
+        }
+    </script>
+    <input type="text" value="HTML,CSS,Java" id="lang">
+    <button onclick="txtReplace();">변경</button>
+    <script>
+        let txtReplace = () => {
+            let tmp = document.getElementById(`lang`).value;
+            if(tmp.includes(`Java`)) {
+                tmp = tmp.replace(`Java`, `JavaScript`);
+                console.log(tmp);
+            }
+        }
+    </script>
+    <!-- 2. Number 객체 -->
+
+    <!-- 3. Math 객체 -->
+    <h1>Math</h1>
+    <button onclick="chgNum();">3.72의 변신</button>
+    <script>
+        let chgNum = () => {
+            let num = -3.72;
+            console.log(Math.floor(num));   // -4
+            console.log(Math.ceil(num));    // -3
+            console.log(Math.round(num));   // -4
+            console.log(Math.abs(num));     // 3.72
+            console.log(Math.pow(num,2));     // (-3.72)^2
+
+            let result = Math.round(num*Math.pow(10, 1))/Math.pow(10,1);
+            console.log(result);
+
+            // 최소 1 ~ 최대 5
+            let rnd = Math.random();
+                rnd = rnd * 5;
+                rnd = Math.floor(rnd);
+                rnd = rnd+1;
+                console.log(rnd);
+        }
+    </script>
+    <!-- 4. Date 객체 -->
+    
+</body>
+</html>
