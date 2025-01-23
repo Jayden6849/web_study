@@ -9,9 +9,180 @@
     <h1>창 열고 닫기</h1>
     <button onclick="createWindow();">새로운 창 열기</button>
     <script>
+        let newWindow;
         let createWindow = () => {
-            window.open();
+            // window.open();
+            // window.open(`https://www.naver.com`);
+            // window.open(`https://www.naver.com`,`_self`);
+            // window.open(`https://www.naver.com`,`_blank`);
+            // window.open(`https://www.naver.com`,`_blank`, `width=300,height=300`);
+            newWindow = open(`https://www.naver.com`,`_blank`, `width=300,height=300`);
         }
     </script>
+    <button onclick="closeWindow();">창 닫기</button>
+    <script>
+        let closeWindow = () => {
+            // window.close();
+            newWindow.close();
+        }
+    </script>
+    <button onclick="openInput();">입력창 열기</button>
+    <button onclick="getInfo();">입력창 정보 가져오기</button>
+    <script>
+        let openInput = () => {
+            newWindow = open(``,`_blank`,`width=300,height=300`);
+            newWindow.document.write(`<label for="text_input">입력</label>
+                                        <input type="text" id="text_input">`);
+        }
+        let getInfo = () => {
+            let textInput = newWindow.document.getElementById('text_input').value;
+            console.log(textInput);
+        }
+    </script>
+    <!-- 1. 로그인 버튼 생성 -->
+    <!-- 2. 로그인 버튼을 클릭하면 아이디와 비밀번호를 입력할 수 있는 창을 띄워줍니다 (크기는 자유) -->
+    <!-- 3. 새로운 창에 있는 닫기버튼을 클릭하면 창이 닫힙니다 -->
+    <hr>
+    <button onclick="popUpToLogIn();">로그인</button>
+    <script>
+        let popUpToLogIn = () => {
+            newWindow = open(``,`_blank`,`width=300,height=400`);
+
+            newWindow.document.write(`<label for="idInput">아이디 : </label>
+                                <input id="idInput" type="text" placeholder="아이디를 입력해주세요">
+                                <br>
+                                <label for="pwInput">비밀번호 : </label>
+                                <input id="pwInput" type="password" placeholder="비밀번호를 입력해주세요">
+                                <br>
+                                <button type="button" onclick="window.close();">닫기</button>`);
+        }
+    </script>
+    <button onclick="moveTest();">창 위치 변경</button>
+    <script>
+        const moveTest = () => {
+            newWindow.moveTo(Math.floor(Math.random()*900)+1, 500);
+            newwWindow.resizeTo(100, 300);
+        }
+    </script>
+    <h1>Timeout</h1>
+    <button onclick="timeoutStart();">시작</button>
+    <button onclick="timeoutEnd();">종료</button>
+    <div id="container">
+
+    </div>
+    <script>
+        let globalTime;
+        let timeoutStart = () => {
+            // console.log(`시작`);
+            globalTime = setTimeout(() => {
+               document.getElementById('container').innerHTML += '<h3>타임아웃!!!</h3>';
+            }, 5000);
+        }
+        let timeoutEnd = () => {
+            // console.log(`종료`);
+            clearTimeout(globalTime);
+            
+        }
+    </script>
+    <h1>interval</h1>
+    <button onclick="intervalStart();">시작</button>
+    <button onclick="intervalEnd();">종료</button>
+    <script>
+        let globalInterval;
+        const intervalStart = () => {
+            let cntdown = 10;
+            globalInterval = setInterval(()=>{
+                document.getElementById('container').innerHTML += `${cntdown--}<br>`;
+            }, 1000);
+        }
+        const intervalEnd = () => {
+            clearInterval(globalInterval);
+        }
+    </script>
+    <div style="background-color: rgb(218, 233, 218);">
+        <div><span id="countDown">60초</span></div>
+        <br>
+        <div>다음 중 프론트엔드 개발자가 다루는 언어가 아닌 것은?</div>
+        <select id="submitAnswer">
+            <option name="selectAnswer" value="0">선택하기</option>
+            <option name="selectAnswer" value="1">1번</option>
+            <option name="selectAnswer" value="2">2번</option>
+            <option name="selectAnswer" value="3">3번</option>
+            <option name="selectAnswer" value="4">4번</option>
+        </select>
+        <br><br>
+        <div>
+            1. CSS<br>
+            2. HTML<br>
+            3. JavaScript<br>
+            4. Java<br>
+        </div>
+    </div>
+    <button onclick="chkTime();">시작</button>
+    <button onclick="stopTime();">제출</button>
+    <script>
+        let globalIntervalTime;
+        let bool = false;
+        const chkTime = () => {
+            if(!bool) {
+                bool = true;
+                let timeLimit=3;
+                let chk;
+                globalIntervalTime = setInterval(()=>{
+                    document.getElementById('countDown').innerHTML = `${timeLimit--}초<br>`;
+                    chk = Number(document.getElementById('countDown').innerText.replace("초",""));
+                    console.log(chk);
+                    if(chk <= 0) {
+                        clearInterval(globalIntervalTime);
+                        alert("시간초과입니다.");
+                    }
+                },1000); 
+            } else {
+                alert('이미 실행중입니다.');
+            }
+        }
+        const stopTime = () => {
+            let answer = Number(document.getElementById('submitAnswer').value);
+            if(bool) {
+                if(answer === 4) {
+                    alert("정답입니다.");
+                    clearInterval(globalIntervalTime);
+                } else {
+                    alert("오답입니다.");
+                }
+            } else {
+                alert("아직 시험을 시작하지 않았습니다.")
+            }
+        }
+    </script>
+    <h1 id="before_ele">before(전)</h1>
+    <script>
+        window.onload = () => {
+            console.log(document.getElementById("before_ele").innerText);
+            console.log(document.getElementById("after_ele").innerText);
+        }
+        </script>
+    <h1 id="after_ele">after(후)</h1>
+    <button onclick="printInformation(screen);">screen 객체 출력</button>
+    <button onclick="printInformation(navigator)">navigator 객체 출력</button>
+    <button onclick="printInformation(history)">history 객체 출력</button>
+    <button onclick="printInformation(location)">location 객체 출력</button>
+    <div id="screen_div">
+        <!-- 해당하는 정보의 내역이 출력될 공간 -->
+    </div>
+    <script>
+        let printInformation = (obj) => {
+            const div = document.getElementById("screen_div");
+            div.innerHTML = "";
+            for(key in obj) {
+                div.innerHTML += `${key} : ${obj[key]}<br>`;
+            }
+        }
+    </script>
+    <hr>
+    <a href="lec10_window_hw(1).html">lec10_window_hw(1).html</a><br>
+    <button onclick="history.back();">이전</button>
+    <button onclick="history.forward();">다음</button>
+    
 </body>
 </html>

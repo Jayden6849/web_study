@@ -24,7 +24,7 @@
             }
         }
     </script>
-    <h1>댓글 입력창</h1>
+    <h1 id="target">댓글 입력창</h1>
     <textarea id="comment" onkeyup="getLength(this);" maxlength="100" placeholder="100자 이내로 적어주세요.">
     </textarea>
     <span id="cnt">0</span>
@@ -124,6 +124,15 @@
                 break;
             }
             alert(`${year}년 ${month+1}월 ${date}일 ${day}요일`);
+        }
+    </script>
+    <button onclick="scrollTest();">스크롤 이동</button>
+    <script>
+        const scrollTest = () => {
+            // scrollTo(0,10);
+            let point = document.getElementById("target").offsetTop;
+            // scrollTo(0,point);
+            scrollTo({left:0, top:point, behavior:"smooth"});
         }
     </script>
 </body>
