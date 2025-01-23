@@ -6,9 +6,128 @@
     <title>window 과제</title>
 </head>
 <body>
+    <!-- 0. 히스토리 테스트 -->
     <h1>히스토리 테스트</h1>
     <a href="lec10_window.html">lec10_window.html</a>
     <button onclick="history.back();">이전</button>
     <button onclick="history.forward();">다음</button>
+
+    <!-- 1. 전자시계 -->
+    <h1>1. 전자시계</h1>
+    <div id="date_div"></div>
+    <h1 id="time_h"></h1>
+    <script>
+        let date = new Date();
+
+        let printHour = date.getHours();
+        let printMinute = date.getMinutes();
+        let printSecond = date.getSeconds();
+
+        window.onload = () => {
+            document.getElementById("date_div").innerHTML = "";
+            document.getElementById("time_h").innerHTML = "";
+
+            document.getElementById("date_div").innerHTML = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
+
+            setInterval(()=>{
+                if(printSecond === 59) {
+                    printSecond -= 59;
+                    if(printMinute === 59) {
+                        printMinute -= 59;
+                        if(printHour === 23) {
+                            printHour -= 23;
+                        } else {
+                            printHour += 1;
+                        }
+                    } else {
+                        printMinute += 1;
+                    }
+                } else {
+                    printSecond += 1;
+                }
+                document.getElementById("time_h").innerHTML = `${printHour} : ${printMinute} : ${printSecond}`;
+            }, 1000);
+        }
+    </script>
+    <h1>2. 행추가</h1>
+    <input id="input_num" type="number">
+    <button onclick="addRow();">출력</button>
+    <div id="target_div">
+
+    </div>
+    <script>
+        let bool = false;
+        let cnt = 1;
+        const addRow = () => {
+            let row = Number(document.getElementById("input_num").value);
+            const tTag = document.createElement('table');
+            const tbody = document.createElement('tbody');
+            const tr = document.createElement('tr');
+            const td = document.createElement('td');
+            const text = document.createTextNode(`${cnt++}`);
+
+            tTag.appendChild(tbody.appendChild(tr.appendChild(td.appendChild(text))));
+            console.log(tr.appendChild(td.appendChild(text)));
+
+            // console.log(tTag);
+            // console.log(tbody);
+            // console.log(tr);
+            // console.log(td);
+            // console.log(text);
+
+            if(!bool) {
+                bool = true;
+                
+                for(let i=0; i<4; i++) {
+                    
+                    
+                    td.appendChild(text);
+                    tr.appendChild(td);
+                }
+                // console.log(tRow);
+                for(let i=0; i<row; i++) {
+                    
+                    // console.log(tRow);
+                }
+                // console.log(tTbody);
+
+                // tTag.appendChild(tTbody).appendChild(tRow).appendChild(tColumn);
+                
+                // console.log(tTag);
+            } else {
+
+            }
+
+        }
+    </script>
+
+    <h1>3. 왔다갔다 창 만들기</h1>
+    <button onclick="createWindow();">창 만들기</button>
+    <button onclick="chgWindow();">자동 변경하기</button>
+    <button onclick="clearWindow();">멈추기</button>
+    
+    <script>
+        let newWindow;
+        let globalIntervalTime;
+        const createWindow = () => {
+            newWindow = open(``,`_blank`,`width=300,height=300`);
+            newWindow.document.write(`<img src="../resources/sponge.png" style="width:150px; height:150px">`);
+        }
+        const chgWindow = () => {
+            globalIntervalTime = setInterval(() => {
+                console.log(`test`);
+                let rnd = Math.floor(Math.random()*900)+1;
+                newWindow.resizeTo(rnd, rnd);
+                newWindow.moveTo(Math.floor(Math.random()*900)+1, Math.floor(Math.random()*900)+1);
+            }, 1000);
+        }
+        const clearWindow = () => {
+            // console.log(`test2`);
+            clearInterval(globalIntervalTime);
+            setTimeout(()=>{
+                newWindow.close();
+            }, 2000);
+        }
+    </script>
 </body>
 </html>

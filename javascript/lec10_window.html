@@ -61,7 +61,7 @@
     <script>
         const moveTest = () => {
             newWindow.moveTo(Math.floor(Math.random()*900)+1, 500);
-            newwWindow.resizeTo(100, 300);
+            newWindow.resizeTo(100, 300);
         }
     </script>
     <h1>Timeout</h1>
@@ -183,6 +183,172 @@
     <a href="lec10_window_hw(1).html">lec10_window_hw(1).html</a><br>
     <button onclick="history.back();">이전</button>
     <button onclick="history.forward();">다음</button>
-    
+
+    <button onclick="location.href='https://www.naver.com/'">href</button>
+    <button onclick="location.assign('https://www.naver.com/')">assign</button>
+    <button onclick="location.replace('https://www.naver.com/')">replace</button>
+    <button onclick="location.reload()">reload</button>
+
+    <h1>텍스트 노드가 있는 태그 생성</h1>
+    <button onclick="addTextElement();">태그 추가</button>
+    <button type="button" onclick="createImg();">이미지 추가</button>
+    <div id="tag_div">
+        <!-- 추가될 공간 -->
+    </div>
+    <script>
+        const addTextElement = () => {
+            // document.getElementById("tag_div").innerHTML += `<p>Hello World</p>`;
+            const pTag = document.createElement('p');
+            const pText = document.createTextNode('Hello World!');
+            pTag.appendChild(pText); // `<p>Hello World</p>`
+            document.getElementById("tag_div").appendChild(pTag);
+        }
+        const createImg = () => {
+            const imgTag = document.createElement('img');
+            imgTag.setAttribute('src', '../resources/dung.png');
+            imgTag.setAttribute('alt', '뚱이가 인사합니다.');
+            imgTag.setAttribute('width', '200');
+            document.getElementById("tag_div").appendChild(imgTag);
+        }
+    </script>
+    <h1>텍스트 노드가 있는 객체 생성</h1>
+    <p>사용자에게 태그와 문구를 입력받은 후,<br>
+    버튼을 클릭하면 test_div를 아이디 속성으로 갖는 div태그에 자식태그로 추가</p>
+    <input id="inputTag" type="text" placeholder="태그입력">
+    <input id="inputTxt" type="text" placeholder="문구입력">
+    <button type="button" onclick="addTxtElement();">버튼</button>
+    <div id="test_div">
+        <!-- 추가될 공간 -->
+    </div>
+    <script>
+        const addTxtElement = () => {
+            const pTg = document.createElement((document.getElementById("inputTag").value));
+            const pTxt = document.createTextNode((document.getElementById("inputTxt").value));
+            pTg.appendChild(pTxt);
+            document.getElementById("test_div").appendChild(pTg);
+        }
+    </script>
+    <h1>텍스트 노드가 없는 객체 생성</h1>
+    <button onclick="createInputNode();">생성</button>
+    <div id="input_div"></div>
+    <script>
+        const createInputNode = () => {
+            const inputTag = document.createElement('input');
+            // console.log(inputTag);
+            inputTag.setAttribute('type', 'text');
+            inputTag.setAttribute('value', 'user01');
+            inputTag.setAttribute('id', 'user_id');
+            document.getElementById("input_div").appendChild(inputTag);
+        }
+    </script>
+    <h1>기준</h1>
+    <ul id="sample_ul">
+        <li>수박</li>
+        <li>딸기</li>
+        <li>레몬</li>
+    </ul>
+    <h3>실제</h3>
+    <button onclick="makeList();">목록 생성</button>
+    <div id="ul_div"></div>
+    <script>
+        const makeList = () => {
+            const arr = ['수박','딸기','레몬'];
+            
+            const ul = document.createElement('ul');
+            for(let i=0; i<arr.length; i++) {
+                const li = document.createElement('li');
+                const text = document.createTextNode(`${arr[i]}`);
+                li.appendChild(text);
+                ul.appendChild(li);
+            }
+            document.getElementById('ul_div').appendChild(ul);
+            // const liTag1 = document.createElement('li');
+            // const text1 = document.createTextNode('수박');
+            // liTag1.appendChild(text1);
+
+            // const liTag2 = document.createElement('li');
+            // const text2 = document.createTextNode('딸기');
+            // liTag2.appendChild(text2);
+
+            // const liTag3 = document.createElement('li');
+            // const text3 = document.createTextNode('레몬');
+            // liTag3.appendChild(text3);
+
+            // const ulTag = document.createElement    ('ul');
+            // ulTag.appendChild(liTag1);
+            // ulTag.appendChild(liTag2);
+            // ulTag.appendChild(liTag3);
+            // console.log(ulTag);
+        }
+    </script>
+    <h1>insertAdjacentElement</h1>
+    <style>
+        #insert_div {border: 1px solid crimson;}
+        #origin {background-color: aquamarine;}
+    </style>
+    <button onclick="insertTest();">원하는 위치에 추가</button>
+    <button onclick="changeInsert();">위치 변경</button>
+    <div id="insert_div">
+        <h1 id="origin">판단용</h1>
+    </div>
+    <script>
+        const insertTest = () => {
+            // console.log(`test`);
+            const h3 = document.createElement('h3');
+            const h3Text = document.createTextNode('지정태그앞(형제)');
+            h3.appendChild(h3Text);
+            // console.log(h3);
+
+            const h2 = document.createElement('h2');
+            const h2Text = document.createTextNode('지정태그뒤(형제)');
+            h2.appendChild(h2Text);
+
+            const h4 = document.createElement('h4');
+            const h4Text = document.createTextNode('자식인데 가장 위');
+            h4.appendChild(h4Text);
+
+            const h5 = document.createElement('h5');
+            const h5Text = document.createTextNode('자식인데 가장 아래');
+            h5.appendChild(h5Text);
+
+            const div = document.getElementById("insert_div");
+
+            div.insertAdjacentElement(`beforebegin`, h3);
+            div.insertAdjacentElement(`afterend`, h2);
+            div.insertAdjacentElement(`afterbegin`, h4);
+            div.insertAdjacentElement(`beforeend`, h5);
+        }
+        const changeInsert = () => {
+            const sample = document.getElementById("sample_ul");
+            const insertDiv = document.getElementById(`insert_div`);
+            insertDiv.insertAdjacentElement(`beforeend`, sample);
+        }
+    </script>
+    <h1>메뉴 추가</h1>
+    <ul id="target_ul">
+        <li>짜장면</li>
+        <li>볶음밥</li>
+        <li>짬뽕</li>
+    </ul>
+    <input id="addedMenu" type="text" placeholder="추가할 메뉴 작성">
+    <button type="button" onclick="addMenu();">추가</button>
+    <button type="button" onclick="moveMenu();">이동</button>
+    <script>
+        const addMenu = () => {
+            let menu = document.getElementById("addedMenu").value;
+            // console.log(menu);
+            const li_tag = document.createElement('li');
+            const li_text = document.createTextNode(menu);
+            li_tag.appendChild(li_text);
+            document.getElementById("target_ul").insertAdjacentElement('beforeend', li_tag);
+        }
+        const moveMenu = () => {
+            const targetUl = document.getElementById("target_ul");
+            // console.log(tmp);
+            const last_li = document.getElementById("target_ul").lastElementChild;
+            // console.log(last_li);
+            targetUl.insertAdjacentElement('afterbegin', last_li);
+        }
+    </script>
 </body>
 </html>
