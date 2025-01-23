@@ -52,52 +52,46 @@
     <h1>2. 행추가</h1>
     <input id="input_num" type="number">
     <button onclick="addRow();">출력</button>
-    <div id="target_div">
+    <div>
+        <table id="target_table" style="display: none;">
+            <tbody id="target_div">
 
+            </tbody>
+        </table>
     </div>
     <script>
         let bool = false;
         let cnt = 1;
         const addRow = () => {
             let row = Number(document.getElementById("input_num").value);
-            const tTag = document.createElement('table');
-            const tbody = document.createElement('tbody');
-            const tr = document.createElement('tr');
-            const td = document.createElement('td');
-            const text = document.createTextNode(`${cnt++}`);
-
-            tTag.appendChild(tbody.appendChild(tr.appendChild(td.appendChild(text))));
-            console.log(tr.appendChild(td.appendChild(text)));
-
-            // console.log(tTag);
-            // console.log(tbody);
-            // console.log(tr);
-            // console.log(td);
-            // console.log(text);
-
+            
             if(!bool) {
                 bool = true;
                 
-                for(let i=0; i<4; i++) {
-                    
-                    
-                    td.appendChild(text);
-                    tr.appendChild(td);
-                }
-                // console.log(tRow);
+                document.getElementById("target_table").style.display = 'block';
+
                 for(let i=0; i<row; i++) {
-                    
-                    // console.log(tRow);
+                    const tr = document.createElement('tr');
+                    for(let i=0; i<4; i++) {
+                        const td = document.createElement('td');
+                        const text = document.createTextNode(`${cnt++}`);
+                        td.appendChild(text);
+                        tr.appendChild(td);
+                    }
+                    document.getElementById('target_div').appendChild(tr);
                 }
-                // console.log(tTbody);
-
-                // tTag.appendChild(tTbody).appendChild(tRow).appendChild(tColumn);
-                
-                // console.log(tTag);
             } else {
-
+                for(let i=0; i<row; i++) {
+                    const tr = document.createElement('tr');
+                    for(let i=0; i<4; i++) {
+                        const td = document.createElement('td');
+                        const text = document.createTextNode(`${cnt++}`);
+                        td.appendChild(text);
+                        tr.appendChild(td);
+                    }
+                    document.getElementById('target_div').appendChild(tr);
+                }
             }
-
         }
     </script>
 
