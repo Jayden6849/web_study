@@ -77,9 +77,9 @@
     <button onclick="chgColor();">바꾸기</button>
     <script>
         let chgColor = () => {
-            let rndNum1 = Math.floor(Math.random()*128);
-            let rndNum2 = Math.floor(Math.random()*128);
-            let rndNum3 = Math.floor(Math.random()*128);
+            let rndNum1 = Math.floor(Math.random()*256);
+            let rndNum2 = Math.floor(Math.random()*256);
+            let rndNum3 = Math.floor(Math.random()*256);
             let rndColor = `rgb(${rndNum1}, ${rndNum2}, ${rndNum2})`
             document.getElementById(`bodyTag`).style.backgroundColor = rndColor;
         }

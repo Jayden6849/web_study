@@ -91,6 +91,40 @@
         }
     </script>
     <!-- 4. Date 객체 -->
-    
+    <h1>날짜</h1>
+    <input type="button" onclick="todayDate();" value="날짜 출력">
+    <script>
+        let todayDate = () => {
+            let today = new Date();
+            let year = today.getFullYear();
+            let month = today.getMonth();
+            let date = today.getDate();
+            let day = today.getDay();
+            switch(day) {
+            case 0:
+                day = "일";
+                break;
+            case 1:
+                day = "월";
+                break;
+            case 2:
+                day = "화";
+                break;
+            case 3:
+                day = "수";
+                break;
+            case 4:
+                day = "목";
+                break;
+            case 5:
+                day = "금";
+                break;
+            case 6:
+                day = "토";
+                break;
+            }
+            alert(`${year}년 ${month+1}월 ${date}일 ${day}요일`);
+        }
+    </script>
 </body>
 </html>
