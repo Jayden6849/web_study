@@ -6,6 +6,123 @@
     <title>이벤트</title>
 </head>
 <body>
-    
+    <h1>이벤트 설정 방식</h1>
+    <h2>1. 인라인 방식</h2>
+    <button onclick="inlineTest(this);">this테스트</button>
+    <button onclick="inlineFunc(event);">event테스트</button>
+    <script>
+        // 인라인방식은 this, event를 쓰고싶으면 매개변수로 this, event 를 넣어줘야함
+        const inlineTest = function(element) {
+            console.log(element);
+        }
+        const inlineFunc = function(e) {
+            console.log(e.target);
+        }
+    </script>
+    <h2>2. 고전 방식</h2>
+    <P id="oldTag">고전 방식 테스트</P>
+    <script>
+        // 고전방식은 동일한 대상에 여러개의 핸들러가 있으면 마지막 핸들러만 작동함
+        document.getElementById("oldTag").onclick = function(e) {
+            console.log(`이게 안 되나?`);
+        }
+        document.getElementById("oldTag").onclick = function(e) {
+            console.log(this);
+            console.log(e.target);
+        }
+    </script>
+
+    <h2>3. 표준 방식</h2>
+    <p id="standTag">표준 방식 테스트</p>
+    <script>
+        // 표준방식은 동일한 대상에 여러개의 핸들러가 있어도 모든 핸들러가 작동함
+        document.getElementById('standTag').addEventListener('click', function(e) {
+            console.log(`이게 되나?`);
+        });
+        document.getElementById('standTag').addEventListener('click', function(e) {
+            console.log(e.target);
+            console.log(this);
+        });
+    </script>
+    <!-- practice -->
+    <h1>인라인, 고전, 표준 연습</h1>
+    <label for="pr1_input">입력 : </label>
+    <input id="pr1_input" type="text" readonly>
+    <br><br>
+    <button id="target_inline" onclick="inlineEvent();">인라인</button>
+    <button id="target_old">고전</button>
+    <button id="target_standard">표준</button>
+    <script>
+        const inlineEvent = function() {
+            document.getElementById('pr1_input').value = `인라인이 클릭되었습니다!`;
+        }
+
+        document.getElementById('target_old').onclick = function() {
+            document.getElementById('pr1_input').value = `고전이 클릭되었습니다!`;
+        }
+        document.getElementById('target_standard').addEventListener(`click`, function() {
+            document.getElementById('pr1_input').value = `표준이 클릭되었습니다!`;
+        });
+    </script>
+    <h1>마우스 이벤트</h1>
+    <div id="mouse_test">
+        타겟
+    </div>
+    <style>
+        #mouse_test{
+            border: green 1px solid;
+            width: 200px; height: 200px;
+        }    
+    </style>
+    <script>
+        document.getElementById('mouse_test').addEventListener('click', function() {
+            this.innerText = '초기화';
+        });
+        document.getElementById('mouse_test').addEventListener('dblclick', function() {
+            this.style.backgroundColor = 'gold';
+        });
+        document.getElementById('mouse_test').addEventListener('mouseenter', function(e) {
+            e.target.innerHTML += '들어갔다!';
+        });
+        document.getElementById('mouse_test').addEventListener('mouseleave', function() {
+            const txt= document.createTextNode('나왔다!');
+            this.appendChild(txt);
+        });
+        document.getElementById('mouse_test').addEventListener('mouseover', function(e) {
+            e.target.innerHTML = '';
+        });
+    </script>
+    <h1>키 이벤트</h1>
+    <textarea id="keyTag"></textarea>
+    <script>
+        document.getElementById("keyTag").addEventListener('keydown', function(e) {
+            // console.log(e.key);
+            // console.log(e.code);
+            if(e.code === 'KeyS') {
+                let img = document.createElement('img');
+                img.setAttribute('src', '../resources/sponge.png');
+                img.setAttribute('width', '50');
+                img.setAttribute('alt', '스폰지밥 이미지입니다.');
+                e.target.insertAdjacentElement('afterend', img);
+            }
+        });
+        document.getElementById("keyTag").addEventListener('keypress', function(e) {
+            if(e.code === 'KeyD') {
+                let img = document.createElement('img');
+                img.setAttribute('src', '../resources/dung.png');
+                img.setAttribute('width', '50');
+                img.setAttribute('alt', '스폰지밥 이미지입니다.');
+                e.target.insertAdjacentElement('beforebegin', img);
+            }
+        });
+        document.getElementById("keyTag").addEventListener('keyup', function(e) {
+            if(e.code === 'CapsLock') {
+                alert('대문자 쓰면 로그인 안 될거에요!');
+            }
+        });
+    </script>
+
+
+
 </body>
 </html>
