@@ -121,8 +121,50 @@
             }
         });
     </script>
+    <h1>form 이벤트</h1>
+    <form>
+        <input id="input1" type="text">
+        <input id="input2" type="password">
+    </form>
+    <script>
+        document.getElementById("input1").addEventListener('focus', function(e){
+            e.target.style.backgroundColor = 'gold';
+        });
+        document.getElementById("input1").addEventListener('blur', function(e){
+            e.target.style.backgroundColor = '';
+        });
+        document.getElementById("input2").addEventListener('focus', function(e){
+            e.target.style.backgroundColor = 'gold';
+        });
+        document.getElementById("input2").addEventListener('blur', function(e){
+            e.target.style.backgroundColor = '';
+        });
+    </script>
 
-
-
+    <h1>버블링 : 자식 -> 부모 -> 조상</h1>
+    <style>
+        #ancestor{border: 2px solid orange;}
+        #parent{border : 4px dotted cadetblue;}
+        #child{border:4px double crimson}
+    </style>
+    <form id="ancestor">
+        조상님
+        <div id="parent">
+            부모님
+            <p id="child">자식</p>
+        </div>
+    </form>
+    <script>
+        document.getElementById('child').addEventListener('click', function() {
+            alert('자식');
+        });
+        document.getElementById('parent').addEventListener('click', function() {
+            alert('부모');
+        });
+        document.getElementById('ancestor').addEventListener('click', function() {
+            alert('조상');
+        });
+    </script>
+    <h1>캡처링 : 조상 -> 부모 -> 자식</h1>
 </body>
 </html>
