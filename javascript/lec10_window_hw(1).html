@@ -54,7 +54,7 @@
     <button onclick="addRow();">출력</button>
     <div>
         <table id="target_table" style="display: none;">
-            <tbody id="target_div">
+            <tbody id="target_tbody">
 
             </tbody>
         </table>
@@ -76,9 +76,10 @@
                         const td = document.createElement('td');
                         const text = document.createTextNode(`${cnt++}`);
                         td.appendChild(text);
+                        td.setAttribute(`style`, `border: 1px solid black`);
                         tr.appendChild(td);
                     }
-                    document.getElementById('target_div').appendChild(tr);
+                    document.getElementById('target_tbody').appendChild(tr);
                 }
             } else {
                 for(let i=0; i<row; i++) {
@@ -87,11 +88,13 @@
                         const td = document.createElement('td');
                         const text = document.createTextNode(`${cnt++}`);
                         td.appendChild(text);
+                        td.setAttribute(`style`, `border: 1px solid black`);
                         tr.appendChild(td);
                     }
-                    document.getElementById('target_div').appendChild(tr);
+                    document.getElementById('target_tbody').appendChild(tr);
                 }
             }
+            document.getElementById("input_num").value = "";
         }
     </script>
 
@@ -123,5 +126,27 @@
             }, 2000);
         }
     </script>
+    <h1>중복 확인</h1>
+    <label for="inputId">아이디</label>
+    <input id="inputId" type="text" onkeyup="chkId();">
+    <div id="chkDiv" class="chkPoint">사용가능한 아이디</div>
+    <style>
+        .chkPoint {
+            color:green;
+        }
+        .chkDuple {
+            color:red;
+        }
+    </style>
+    <script>
+        const chkId = () => {
+            let id = document.getElementById("inputId").value;
+            // console.log(id);
+            if(id==='user01') {
+                document.getElementById("chkDiv")
+            }
+        }
+    </script>
+
 </body>
 </html>
