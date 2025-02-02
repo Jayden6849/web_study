@@ -140,8 +140,7 @@
             e.target.style.backgroundColor = '';
         });
     </script>
-
-    <h1>버블링 : 자식 -> 부모 -> 조상</h1>
+    <hr>
     <style>
         #ancestor{border: 2px solid orange;}
         #parent{border : 4px dotted cadetblue;}
@@ -154,7 +153,8 @@
             <p id="child">자식</p>
         </div>
     </form>
-    <script>
+    <h1>버블링 : 자식 -> 부모 -> 조상</h1>
+    <!-- <script>
         document.getElementById('child').addEventListener('click', function() {
             alert('자식');
         });
@@ -164,7 +164,58 @@
         document.getElementById('ancestor').addEventListener('click', function() {
             alert('조상');
         });
-    </script>
+    </script> -->
     <h1>캡처링 : 조상 -> 부모 -> 자식</h1>
+    <!-- <script>
+        document.getElementById('child').addEventListener('click',function(){
+            alert('자식');
+        },true);
+        document.getElementById('parent').addEventListener('click',function(){
+            alert('부모');
+        },true);
+        document.getElementById('ancestor').addEventListener('click',function(){
+            alert('조상');
+        },true);
+    </script> -->
+
+    <h1>이벤트 차단</h1>
+    <script>
+        document.getElementById('child').addEventListener('click',function(e){
+            e.stopPropagation();
+            alert('자식');
+        });
+        document.getElementById('parent').addEventListener('click',function(e){
+            e.stopPropagation();
+            alert('부모');
+        });
+        document.getElementById('ancestor').addEventListener('click',function(e){
+            e.stopPropagation();
+            alert('조상');
+        });
+    </script>
+    <h1>이벤트 제거 1</h1>
+    <a id="noClick" href="https://www.naver.com">네이버</a>
+    <script>
+        document.getElementById('noClick').addEventListener('click',function(event){
+            event.preventDefault();
+            alert('나는 네이버로 가지 않을꺼에요!!');
+        });
+    </script>
+    <h1>이벤트 제거 2</h1>
+    <form id="testFrm" style="border: 1px solid crimson;">
+        <input type="text" name="user_data">
+        <input type="submit" value="제출하기">
+    </form>
+    <script>
+        document.getElementById('testFrm').onsubmit = function(){
+            const val = document.querySelector('input[name=user_data]').value;
+            if(val.length < 4){
+                alert('데이터는 4글자 이상이어야 해요.');
+                return false;
+            } else{
+                return true;
+            }
+        }
+    </script>
 </body>
 </html>

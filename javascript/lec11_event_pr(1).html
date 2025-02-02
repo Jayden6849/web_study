@@ -40,5 +40,37 @@
         }
     });
     </script>
+    <h3>유효성 검사</h3>
+    <style>
+        .pw_vali{display: none;}
+        .pw_vali.pass{display:inline;color: green;}
+        .pw_vali.fail{display: inline;color: red;}
+    </style>   
+    <form id="joinForm">
+        <input type="password" placeholder="비밀번호" name="user_pw"><br>
+        <input type="password" placeholder="비밀번호 확인" name="user_pw_check"><br>
+        <span class="pw_vali"></span>
+    </form>
+    <script>
+        // 1. blur이벤트 사용(비밀번호 확인)
+        // 2. event.target.value를 통해서 비밀번호와 비밀번호 확인 값 가져오기
+        // 3. 비밀번호와 비밀번호 확인 일치확인
+        // 4. 일치 -> pass 클래스 추가, X -> fail 클래스 추가 
+        // (절대 html 코드 수정하지 마세요. id, class 추가 불가능)
+        document.getElementsByName('user_pw_check')[0].addEventListener('blur',function(event){
+            const pwCheck = event.target.value;
+            const pw = event.target.previousElementSibling.previousElementSibling.value;
+            const pwVali = event.target.nextElementSibling.nextElementSibling;
+            if(pw === pwCheck){
+                pwVali.innerText = '비밀번호가 일치합니다.';
+                pwVali.classList.add('pass');
+                pwVali.classList.remove('fail');
+            } else{
+                pwVali.innerText = '비밀번호가 일치하지 않습니다.';
+                pwVali.classList.add('fail');
+                pwVali.classList.remove('pass');
+            }
+        });
+    </script>
 </body>
 </html>
