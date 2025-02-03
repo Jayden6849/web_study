@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자-연습문제</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <!-- 실행버튼을 클릭하면 confirm 창에 '개인정보활용에 동의하시겠습니까?'를 띄움 -->
+    <!-- 확인을 클릭하면 alert창에 '다음단계로 진행합니다' 라고 출력함 -->
+    <!-- 취소를 클릭하면 alert창에 '개인정보활용 동의없이 회원가입을 진행할 수 없습니다' 라고 출력함 -->
+    <div class="test_div">
+        <button id="confirm_btn">실행</button>
+    </div>
+    <script>
+        // 1. id를 활용하는 방법
+        // $(function(){
+        //     $("#confirm_btn").on('click', function(){
+        //         let chkConfirm = confirm('개인정보활용에 동의하시겠습니까?');
+        //         if(chkConfirm) {
+        //             alert('다음 단계로 진행합니다.');
+        //         } else {
+        //             alert('개인정보활용 동의없이 회원가입을 진행할 수 없습니다.');
+        //         }
+        //     });
+        // });
+        // 2. class와 tag, 자손 활용하는 방법
+        $(function(){
+            $(".test_div > button").on('click', function(){
+                let chkConfirm = confirm('개인정보활용에 동의하시겠습니까?');
+                if(chkConfirm) {
+                    alert('다음 단계로 진행합니다.');
+                } else {
+                    alert('개인정보활용 동의없이 회원가입을 진행할 수 없습니다.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
