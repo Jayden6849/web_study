@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요소 탐색 과제</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>1. 요소 탐색 총정리</h1>
+    <div id="prompt_div">
+        <h2>promt로 입력받기</h2>
+        <button>실행</button>
+        <div></div>
+    </div>
+    <script>
+        $(function(){
+            $('#prompt_div > button').on('click', function(){
+                // console.log('확인');
+                let msg = prompt('메시지를 입력하세요.');
+                // console.log(msg);
+                $('#prompt_div > div').first().html(msg);
+            });
+        });
+    </script>
+    <h2>2. 랜덤 뽑기</h2>
+    <button id="makeRnd_btn">실행하기</button>
+    <div id="resultRnd_div"></div>
+    <script>
+        $(function(){
+            $('#makeRnd_btn').on('click', function(){
+                // console.log('버튼확인');
+                let rndArr = [];
+                for(let i=0; i<5; i++) {
+                    rndArr[i] = Math.floor(Math.random()*100)+1;
+                }
+                rndArr.sort(function(prev, next){
+                    if(prev > next) return -1;
+                    else if(prev < next) return 1;
+                    else return 0;
+                });
+                // console.log(rndArr);
+                $('#resultRnd_div').text(rndArr);
+            });
+        });
+    </script>
+    <h1>3. 출석부</h1>
+    <button id="printStd">출력</button>
+    <table>
+        <tbody>
+            
+        </tbody>
+    </table>
+    <script>
+        const arr = [{name:'김철수',age : 20,address:'서울'}, {name:'이영희',age:30,address:'부산'}, {name:'최철수',age:40,address:'광주'}];
+        $('#printStd').on('click', function(){
+            // console.log('출력확인');
+            $('table > tbody').append('<tr><th>이름</th><th>나이</th><th>주소</th>');
+            let arrStd = $.each(arr, function(index, value){
+                $('table > tbody').append(`<tr><td>${value['name']}</td><td>${value[`age`]}</td><td>${value[`address`]}</td></tr>`);
+            });
+        });
+    </script>
+    <h1>과일 가게 할인</h1>
+    <ul id="target_ul"></ul>
+    <button id="discount_btn">할인하기</button>
+    <script>
+        const products = {
+            "사과": 3000,
+            "바나나": 2000,
+            "체리": 8000,
+            "포도": 7000,
+            "수박": 5000
+        };
+        $(function(){
+            $.each(products, function(key, value){
+                $('#target_ul').append(`<li>${key}: ${value}원</li>`);
+            });
+            $('#discount_btn').on('click', function(){
+                // console.log('할인버튼확인');
+                $('#target_ul').html(``);
+                $.each(products, function(key, value){
+                    if(value >= 7000) {
+                        value *= 0.8;
+                        $('#target_ul').append(`<li>${key}: ${value}원</li>`);
+                    } else if(value >= 5000) {
+                        value *= 0.9;
+                        $('#target_ul').append(`<li>${key}: ${value}원</li>`);
+                    } else {
+                        $('#target_ul').append(`<li>${key}: ${value}원</li>`);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
