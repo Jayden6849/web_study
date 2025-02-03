@@ -93,5 +93,36 @@
             }
         });
     </script>
+    <button id="each_btn">each 써보기</button>
+    <ul id="fruitList">
+        <li>사과</li>
+        <li>바나나</li>
+        <li>체리</li>
+    </ul>
+    <script>
+        const fruits = ['사과', '바나나', '체리'];
+        const user = { name: '철수', age: 25, city: '서울' };
+        $(function(){
+            // 1. 배열에 접근해보기
+            $('#each_btn').on('click', function() {
+                $.each(fruits, function(index, value){
+                    console.log(`${index} : ${value}`);
+                });
+            });
+            // 2. 객체에 접근해보기
+            $('#each_btn').on('click', function() {
+                $.each(user, function(key, value){
+                    console.log(`${key} : ${value}`);
+                });
+            });
+            // 3. DOM 요소에 접근해보기
+            $('#each_btn').on('click', function() {
+                $('#fruitList li').each(function(index, item) {
+                    let txt = $(item).text();
+                    console.log(txt);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
