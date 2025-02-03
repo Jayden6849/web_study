@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filter 연습문제</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <!-- 확인하기 버튼을 클릭하면 data_div의 자식 요소들 전체 중에서 -->
+    <!-- 글자의 길이가 3이상인 요소의 글자색을 orange로 변경하세요 -->
+    <h2>3글자 이상 데이터 찾기</h2>
+    <div class="data_div">
+        <p>가나다라</p>
+        <p>abcde</p>
+        <h3>썬칩</h3>
+        <h5>홈런볼</h5>
+        <span>초코칩쿠키</span>
+        <p>칸쵸</p>
+        <h5>초코파이</h5>
+        <h2>칙촉</h2>
+    </div>
+    <button id="checkBtn">확인하기</button>
+    <script>
+        let regExp = /^[a-z]*$/
+        $(function(){
+            $('#checkBtn').on('click', function() {
+                $('.data_div > *').filter(function(index, item){
+                    return $(item).text().length >=3;
+                }).css('color', 'orange');
+                $('.data_div > *').filter(function(index, item){
+                    return regExp.test($(item).text());
+                }).css('backgroundColor', 'gold');
+            });
+        });
+    </script>
+</body>
+</html>
