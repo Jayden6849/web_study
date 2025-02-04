@@ -33,19 +33,42 @@
         });
     </script>
     <h1>게시판에 글 쓰기</h1>
-    <input type="radio" name="select" value="1" name="tagH1">
+    <input type="radio" name="select" value="1" id="tagH1">
     <label for="tagH1">제목1</label><br>
-    <input type="radio" name="select" value="1" name="tagH2">
+    <input type="radio" name="select" value="2" id="tagH2">
     <label for="tagH2">제목2</label><br>
-    <input type="radio" name="select" value="1" name="tagH3">
+    <input type="radio" name="select" value="3" id="tagH3">
     <label for="tagH3">제목3</label><br>
-    <input type="radio" name="select" value="1" name="tagP">
+    <input type="radio" name="select" value="4" id="tagP">
     <label for="tagP">문단</label><br>
     <label for="txt_input">내용</label>
     <input type="text" id="txt_input">
+    <div id="insertEle_div">
+        <!-- 요소가 추가될 공간 -->
+    </div>
     <script>
         $(function(){
-            
+            $('#txt_input').on('keyup', function(key){
+                if(key.keyCode==13) {
+                    $('#insertEle_div').html('');
+                    let ele = $('#txt_input').val();
+                    if($('#tagH1').is(':checked')) {
+                        // console.log('testH1');
+                        $('#insertEle_div').append(`<h1>${ele}</h1>`);
+                    } else if($('#tagH2').is(':checked')) {
+                        // console.log('testH2');
+                        $('#insertEle_div').append(`<h2>${ele}</h2>`);
+                    } else if($('#tagH3').is(':checked')) {
+                        // console.log('testH3');
+                        $('#insertEle_div').append(`<h3>${ele}</h3>`);
+                    } else if($('#tagP').is(':checked')) {
+                        // console.log('testP');
+                        $('#insertEle_div').append(`<p>${ele}</p>`);
+                    } else {
+                        alert('타입을 선택해주세요');
+                    }
+                }
+            });
         });
     </script>
 </body>
