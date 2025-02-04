@@ -72,5 +72,43 @@
             console.log(condition);
         };
     </script>
+    <h1>prop()</h1>
+    <form id="check_container">
+        <input type="checkbox" name="lang" value="html">html<br>
+        <input type="checkbox" name="lang" value="css">css<br>
+        <input type="checkbox" name="lang" value="javascript">javascript
+    </form>
+    <button onclick="takeProp();">가져오기</button>
+    <button onclick="changeProp();">바꾸기</button>
+    <script>
+        const takeProp = function(){
+            // let chkProp = $('#check_container > input').first().attr('checked'); // attr로 가져오면 무조건 undefined임
+            let chkHtml = $('#check_container > input').first().prop('checked');
+            let chkCss = $('#check_container > input').first().prop('checked');
+            let chkJs = $('#check_container > input').first().prop('checked');
+            console.log(chkHtml);
+        };
+        const changeProp = function(){
+            let ele = $('#check_container > input');
+            let flag = ele.prop('checked');
+            ele.prop('checked', !flag);
+
+            // if(ele.prop('checked')) {
+            //     ele.prop('checked', false);
+            // } else {
+            //     ele.prop('checked', true);
+            // }
+        };
+    </script>
+    <h1>스타일 설정하기</h1>
+    <p id='styleTag'>컬러풀</p>
+    <script>
+        $(function(){
+            $('#styleTag').click(function(e){
+                // $(this).css('color', 'gold').css('fontSize', '2em');
+                $(e.target).css({'color':'gold','fontSize':'2em'});
+            });
+        });
+    </script>
 </body>
 </html>

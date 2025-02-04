@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 과제</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h2>글쓰기</h2>
+    <div id="eventContainer">
+        <form name="eventFrm">
+            <label for="title">제목</label>
+            <input type="text" name="title" id="title"><br>
+            <label for="type">종류</label>
+            <select name="type" id="type">
+                <option value="0">선택</option>
+                <option value="1">공지</option>
+                <option value="2">질문</option>
+                <option value="3">자유</option>
+            </select><br>
+            <label for="content">내용</label>
+            <textarea name="content" id="content" cols="30" rows="10" style="resize:none"></textarea>
+            <span id="target_span">0/100</span>
+        </form>
+    </div>
+    <script>
+        $(function(){
+            $('#type').change(function(){
+                // console.log($(this).val());
+                if($(this).val() == 1) {
+                    $('#content').html(`행사명 : \n행사일 : \n장  소 : \n`);
+                } else if($(this).val() == 2) {
+                    $('#content').html(`키워드 : \n요약 : \n`);
+                } else if($(this).val() == 3) {
+                    $('#content').html(``);
+                } else {
+                    $('#content').html(``);
+                }
+            });
+            $('#content').keyup(function(){
+                let txtLength = $(this).val().length;
+                // console.log(txtLength);
+                if(txtLength <= 100) {
+                    $('#target_span').html(`${txtLength}/100`);
+                } else {
+                    $(this).val($(this).val().substring(0, 100));
+                    alert('100자 이내로 작성해주세요.');
+                }
+            });
+        });
+    </script>
+    <h1>제곱 계산기</h1>
+    <h3>2 * 1 = 2</h3>
+    <button id="doubleBtn">클릭</button>
+    <script>
+        $(function(){
+            $('#doubleBtn').click(function(){
+                let val = $('h3').text().split(" ");
+                let val1 = Number(val[val.length-1]);
+                // console.log(val1);
+                $('h3').text(`2 * ${val1} = ${val1*2}`);
+            });
+        });
+    </script>
+</body>
+</html>

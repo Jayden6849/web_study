@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>야간모드</title>
+    <style>
+        .darkmode{
+            background-color: black;
+            color:white;
+        }
+    </style>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <button id="darkBtn">야간모드</button>
+    <button id="resetBtn">비활성화</button>
+    <script>
+        $(function(){
+            $('#darkBtn').click(function(){
+                // console.log('testDark');
+                $('body').toggleClass('darkmode');
+            });
+            $('#resetBtn').click(function(){
+                // console.log('testReset');
+                $('#darkBtn').off('click');
+            });
+        });
+    </script>
+</body>
+</html>
