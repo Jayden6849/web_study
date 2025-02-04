@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set</title>
+    <style>
+        .btn-3d {
+            display: inline-block;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px 40px;
+            color: white;
+            background: linear-gradient(145deg, #3a8dff, #2674d9);
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 6px #1a5bbd, 0 8px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            text-align: center;
+            text-transform: uppercase;
+            user-select: none;
+        }
+        .btn-3d.active {
+            transform: translateY(6px);
+            box-shadow: 0 2px #1a5bbd, 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <a href="#" class="btn-3d">버튼</a>
+    <script>
+        $(function(){
+            $('.btn-3d').on('click', function(e){
+                e.preventDefault();
+                $(e.target).toggleClass('active');
+            });
+        });
+    </script>
+</body>
+</html>

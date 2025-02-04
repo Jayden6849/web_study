@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set 연습</title>
+    <style>
+        .bg_brown{
+            background-color: rgba(92,64,51,0.6);
+        }
+    </style>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>배경색 변경</h1>
+    <button id="chgBg_btn">배경색 변경</button>
+    <script>
+        $(function(){
+            $('#chgBg_btn').click(function(){
+                $('body').toggleClass('bg_brown');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요소생성 과제</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>10개까지 추가</h1>
+    <button id="insert_btn">추가</button>
+    <div id="target_div">
+        
+    </div>
+    <script>
+        let cnt = 0;
+        $(function(){
+            $('#insert_btn').click(function(){
+                // console.log('버튼테스트');
+                // if(cnt >= 10) {
+                //     alert('10개까지만 추가할 수 있습니다.');
+                // } else {
+                //     $('#target_div').append(`<input type='text'><br>`);
+                //     cnt++;
+                // }
+                if($('#target_div > input').length >= 10) {
+                    alert('10개까지만 추가할 수 있습니다.');
+                } else {
+                    $('#target_div').append(`<input type='text'><br>`);
+                    cnt++;
+                }
+            });
+        });
+    </script>
+    <h1>게시판에 글 쓰기</h1>
+    <input type="radio" name="select" value="1" name="tagH1">
+    <label for="tagH1">제목1</label><br>
+    <input type="radio" name="select" value="1" name="tagH2">
+    <label for="tagH2">제목2</label><br>
+    <input type="radio" name="select" value="1" name="tagH3">
+    <label for="tagH3">제목3</label><br>
+    <input type="radio" name="select" value="1" name="tagP">
+    <label for="tagP">문단</label><br>
+    <label for="txt_input">내용</label>
+    <input type="text" id="txt_input">
+    <script>
+        $(function(){
+            
+        });
+    </script>
+</body>
+</html>
