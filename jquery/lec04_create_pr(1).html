@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create 연습</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>이미지 입력받기</h1>
+    <!-- 사용자가 text타입 input에 이미지 경로를 입력합니다 -->
+    <!-- <추가>버튼을 클릭하면 이미지가 div안에 맨 뒤 요소로 추가될 수 있도록 -->
+    <!-- 라디오버튼을 만듭니다 -->
+    <!-- 사용자가 선택한 항목에 따라 요소의 생성 위치가 달라질 수 있도록 -->
+    <input type="radio" name="brother" id="back" value="1" checked>
+    <label for="back">뒤에 추가</label>
+    <input type="radio" name="brother" id="front" value="2">
+    <label for="front">앞에 추가</label>    
+    <hr>
+    <input type="text" id='image_src' placeholder="이미지 경로를 입력해주세요.">
+    <button type="button" id="input_btn">추가</button>
+    <div id="target_div"></div>
+    <script>
+        $(function(){
+            $('#input_btn').click(function(){
+                // console.log('버튼 테스트');
+                let image_src = $('#image_src').val();
+                // console.log(image_src);
+                if($('#back').is(':checked')) {
+                    $('#target_div').append(`<img src='${image_src}'>`);
+                    // console.log('after');
+                } else if($('#front').is(':checked')) {
+                    $('#target_div').prepend(`<img src='${image_src}'>`);
+                    // console.log('before');
+                }
+            });
+        });
+    </script>
+    <h1>파일 업로드</h1>
+    <button id="add_file">파일 추가</button>
+    <div id="file_container">
+        <div class="file_div">
+            <input type="file" name="files">
+            <button class="remove_file">삭제</button>
+        </div>
+    </div>
+    <script>
+        let cnt = 1;
+        $(function(){
+            let appendDiv = $('.file_div').clone(true);
+            $('#add_file').click(function(){
+                appendDiv = $('.file_div').clone(true);
+                $('#file_container').append(appendDiv[0]);
+                cnt++;
+            });
+            $('.remove_file').click(function(){
+                let removeEl = $(this).parent().detach();
+                cnt--;
+                if(cnt==0) {
+                    $('#file_container').append(removeEl);
+                    cnt++;
+                    alert('최소한 하나의 파일 입력 필드는 남아있어야 합니다.');
+                }
+                // console.log(cnt);
+            });
+        });
+    </script>
+</body>
+</html>

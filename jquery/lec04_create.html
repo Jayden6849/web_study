@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>html() 함수</h1>
+    <div id="myDiv">
+        <a href="#">구디</a>
+    </div>
+    <button id="getHtml">HTML 가져오기</button>
+    <button id="setHtml">HTML 변경하기</button>
+    <script>
+        $(function(){
+            $('#getHtml').on('click',function(){
+                let txt = $('#myDiv > a').html();
+                console.log(txt);
+                let text = $('#myDiv > a').text();
+                console.log(text);
+            });
+            $('#setHtml').on('click', function(){
+                $('#myDiv > a').html('구디아카데미');
+                $('#myDiv > a').text('구디아카데미');
+                $('#myDiv > a').append('<br>html');
+            });
+        });
+    </script>
+    <h2>자식 요소 추가</h2>
+    <div id="container" style="border:2px solid green;">
+        <p>기존 자식 요소(기준)</p>
+    </div>
+    <hr>
+    <button id="addLast">맨 뒤에 추가</button>
+    <button id="addFirst">맨 앞에 추가</button>
+    <button id="addBefore">앞에 추가</button>
+    <button id="addAfter">뒤에 추가</button>
+    <hr>
+    <script>
+        $(function(){
+            $('#addLast').click(function(){
+                $('#container').append('<p>APPEND</p>');
+            });
+            $('#addFirst').click(function(){
+                $('#container').prepend('<p>PREPEND</p>');
+            });
+            $('#addBefore').click(function(){
+                $('#container').before('<p>BEFORE</p>');
+            });
+            $('#addAfter').click(function(){
+                $('#container').after('<p>AFTER</p>');
+            });
+        });
+    </script>
+    <h1>태그 이동</h1>
+    <style>
+        #move_container{border:2px double dodgerblue;}
+        #new_container{border:2px dashed salmon;}
+    </style>
+    <div id="move_container">
+        <p>첫 번째 p태그</p>
+        <h4>h4 태그</h4>
+    </div>
+    <button onclick="moveAppend();">append 이동</button>
+    <button onclick="movePrepend();">prepend 이동</button>
+    <button onclick="moveBefore();">before 이동</button>
+    <button onclick="moveAfter();">after 이동</button>
+    <div id="new_container">
+        <h5>기준 태그</h5>
+    </div>
+    <script>
+        const moveAppend = function(){
+            // $('#new_container').append($('#move_container > *:last()'));
+            $('#move_container > *:last()').appendTo($('#new_container'));
+        };
+        const movePrepend = function(){
+            $('#move_container > *:last()').prependTo($('#new_container'));
+        };
+        const moveBefore = function(){
+            $('#move_container > *:last()').insertBefore($('#new_container'));
+        };
+        const moveAfter = function(){
+            $('#move_container > *:last()').insertAfter($('#new_container'));
+        };
+    </script>
+    <h1>복제하기</h1>
+    <button onclick="cloneTest();">복제</button>
+    <div id="container_clone">
+        <!-- 복제할 내용 시작 -->
+        <div id="item1" class="item">
+            <span>Hello</span>
+        </div>
+        <!-- 복제할 내용 끝 -->
+    </div>
+    <script>
+        let num = 2;
+        const cloneTest = function(){
+            let div = $('#item1').clone(true).attr(`id`,`item`+num++);
+            $('#container_clone').append(div);
+        };
+        // $(function(){
+        //     $('.item').on('click', function(){
+        //         alert($(this).attr(`id`));
+        //     });
+        // });
+    </script>
+    <h1>요소 제거</h1>
+    <div id="remove_div">
+        <div id="item2" class="item">
+            <span>Hi Hello 안녕</span>
+        </div>
+        <h1>테스트</h1>
+    </div>
+    <button id="remove_btn">remove</button>
+    <button id="detach_btn">detach</button>
+    <button id="empty_btn">empty</button>
+    <div id="remove_result">
+    
+    </div>
+    <script>
+        $(function(){
+            $('#item2').on('click', function(){
+                alert('test');
+            });
+        });
+        $('#remove_btn').click(function(){
+            const removeEl = $('#item2').remove();
+            $('#remove_result').append(removeEl);
+        });
+        $('#detach_btn').click(function(){
+            const detachEl = $('#item2').detach();
+            $('#remove_result').append(detachEl);
+        });
+        $('#empty_btn').click(function(){
+            $('#remove_result').empty();
+        });
+    </script>
+</body>
+</html>
