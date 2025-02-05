@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항 숨기기</title>
+    <style>
+        #notice_div {
+            width: 300px;
+            padding: 20px;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: none; /* 초기에는 숨김 */
+        }
+        .displayNone{
+            display: none;
+        }
+    </style>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <button id="show_btn">공지 보기</button>
+    <button id="hide_btn" class="displayNone">공지 숨기기</button>
+    <div id="notice_div">
+        공지사항: 서버 점검으로 인해 내일 02:00 ~ 04:00 서비스가 중단됩니다.
+    </div>
+    <script>
+        $(function(){
+            $('#show_btn').click(function(){
+                $(this).addClass('displayNone');
+                $('#hide_btn').removeClass('displayNone');
+                $('#notice_div').show(1000);
+            });
+            $('#hide_btn').click(function(){
+                $(this).addClass('displayNone');
+                $('#show_btn').removeClass('displayNone');
+                $('#notice_div').hide(1000);
+            });
+        });
+    </script>
+</body>
+</html>
