@@ -45,5 +45,46 @@
             });
         });
     </script>
+    <h1>hover</h1>
+    <img src="../resources/dung.png" style="width:150px;" id="imgTarget">
+    <script>
+        $(function(){
+            $('#imgTarget').hover(function(){
+                $(this).css('opacity','0.5');
+            }, function(){
+                $(this).css('opacity','1');
+            });
+        });
+    </script>
+    <h1>trigger</h1>
+    <label>
+        비밀번호
+        <input name="user_pw" type="password">
+    </label>
+    <br>
+    <label>
+        비밀번호 확인
+        <input name="pw_check" type="password">
+    </label>
+    <br>
+    <span id="result"></span>
+    <script>
+        $(function(){
+            $('input[name=pw_check]').keyup(function(){
+                const userPw = $('input[name=user_pw]').val();
+                const pwCheck = $(this).val();
+                
+                if(userPw == pwCheck) {
+                    $('#result').html('일치합니다.');
+                } else {
+                    $('#result').html('일치하지 않습니다.');
+                }
+            });
+
+            $('input[name=user_pw]').keyup(function(){
+                $('input[name=pw_check]').trigger('keyup');
+            });
+        });
+    </script>
 </body>
 </html>
